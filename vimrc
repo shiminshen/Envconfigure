@@ -47,8 +47,10 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'yonchu/accelerated-smooth-scroll'
 " show git diff in the gutter
 Plug 'airblade/vim-gitgutter'
-"markdown plugin
+" markdown syntax plugin
 Plug 'https://github.com/plasticboy/vim-markdown.git'
+" markdown realtime preview plugin
+Plug 'https://github.com/suan/vim-instant-markdown.git'
 "jsx plugin
 Plug 'mxw/vim-jsx'
 
