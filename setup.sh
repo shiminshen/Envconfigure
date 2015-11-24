@@ -1,4 +1,4 @@
 #! /bin/zsh
 
 PATH='/bin'
-ln -s "$PWD/vimrc" "$HOME/.vimrc"
+ln -fs "$PWD/vimrc" "$HOME/.vimrc"
