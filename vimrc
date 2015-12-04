@@ -189,7 +189,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 "gvim
 "set nocompatible
-colorscheme lettuce
+set background=dark
+colorscheme gruvbox
 
 "eclipse gvim
 set guioptions-=m " turn off menu bar
