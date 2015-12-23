@@ -67,7 +67,7 @@ Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 Plug 'https://github.com/Shougo/neomru.vim.git'
 Plug 'https://github.com/Shougo/unite.vim.git'
-"config
+" unite config
 nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
 nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
 noremap <Leader>f :Unite grep:.<cr>
@@ -138,38 +138,41 @@ nnoremap <Leader>w :w<CR>
 " set the backspace can delete characters in insert mode
 set backspace=indent,eol,start
 
-"set color on vim74
+" set color on vim74
 syntax enable
 
-"set up omnifunction 
-"set omnifunc=syntaxcomplete#Complete 
+" set up omnifunction 
+" set omnifunc=syntaxcomplete#Complete 
 
-"return the position of last left
+" return the position of last left
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-"tagbar
+" tagbar
 nmap tb :TagbarToggle<CR>
 
+" js-docs
+nmap <silent> <C-l> <Plug>(jsdoc)
+let g:jsdoc_allow_input_prompt = 1
 
-"airline
+" airline
 set guifont=Inconsolara\ for\ Powerline:h24
 set laststatus=2
 let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-"easymotion
+" easymotion
 let g:EasyMotion_leader_key = '<Leader>'
 
-"n-character search motion
+" n-character search motion
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-"2-character search motion
+" 2-character search motion
 nmap s <Plug>(easymotion-s2)
-"nmap t <Plug>(easymotion-t2)
-"easymotion line motion
+" nmap t <Plug>(easymotion-t2)
+" easymotion line motion
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
