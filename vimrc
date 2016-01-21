@@ -58,10 +58,14 @@ Plug 'mxw/vim-jsx'
 " Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
 Plug 'NLKNguyen/easy-navigate.vim'
 
-"error detect plugin
+" error detect plugin
 Plug 'https://github.com/scrooloose/syntastic.git'
 
+" html autocomplete plugins
+Plug 'https://github.com/mattn/emmet-vim.git'
 
+" html highlight matched tags plugins
+Plug 'https://github.com/Valloric/MatchTagAlways.git'
 
 "unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
@@ -72,18 +76,21 @@ nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr
 nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
 noremap <Leader>f :Unite grep:.<cr>
 
-"plugin for livescript
+" plugin for livescript
 Plug 'https://github.com/gkz/vim-ls.git'
 "autocomplie when saving files
 "au BufWritePost *.ls silent LiveScriptMake!
 au BufWritePost *.ls silent LiveScriptMake! | cwindow | redraw!
 "syntax heighlighting for stylus 
 Plug 'https://github.com/wavded/vim-stylus.git'
-"compile when save
+" compile when save
 "nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
-"multiple-cursors
+" multiple-cursors
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+
+" react-snippets
+Plug 'justinj/vim-react-snippets'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
