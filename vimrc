@@ -46,13 +46,20 @@ Plug 'wesQ3/vim-windowswap'
 " smooth C-F, C-B
 Plug 'yonchu/accelerated-smooth-scroll'
 " show git diff in the gutter
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+
 " markdown syntax plugin
 Plug 'https://github.com/plasticboy/vim-markdown.git'
 " markdown realtime preview plugin
 Plug 'https://github.com/suan/vim-instant-markdown.git'
-"jsx plugin
+
+" plugin for js indent.
+Plug 'pangloss/vim-javascript'
+
+" jsx plugin
 Plug 'mxw/vim-jsx'
+" enable in .js files.
+let g:jsx_ext_required = 0
 
 " plugin for buffer navigator 
 " Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
