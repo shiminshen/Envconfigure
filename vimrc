@@ -54,7 +54,8 @@ Plug 'https://github.com/plasticboy/vim-markdown.git'
 " markdown realtime preview plugin
 Plug 'https://github.com/suan/vim-instant-markdown.git'
 
-" plugin for js indent.
+" plugin for javascript.
+Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 
 " jsx plugin
@@ -113,14 +114,15 @@ let g:UltiSnipsEditSplit="vertical"
 
 Plug 'https://github.com/claco/jasmine.vim.git'
 
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
+" automatic closing of parenthesis
+Plug 'https://github.com/Raimondi/delimitMate.git'
 " You can specify revision/branch/tag.
 Plug 'Shougo/vimshell', { 'rev' : '3787e5' }
 
 call plug#end()
 
 let NERDTreeShowHidden = 1
-"use ctrl + n to open NERDTree
+" use ctrl + n to open NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 
 set encoding=utf-8
