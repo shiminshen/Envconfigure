@@ -58,6 +58,9 @@ Plug 'https://github.com/suan/vim-instant-markdown.git'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 
+" better indent format
+Plug 'Chiel92/vim-autoformat'
+
 " jsx plugin
 Plug 'mxw/vim-jsx'
 " enable in .js files.
@@ -115,7 +118,9 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'https://github.com/claco/jasmine.vim.git'
 
 " automatic closing of parenthesis
-Plug 'https://github.com/Raimondi/delimitMate.git'
+" Plug 'https://github.com/Raimondi/delimitMate.git'
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
+
 " You can specify revision/branch/tag.
 Plug 'Shougo/vimshell', { 'rev' : '3787e5' }
 
@@ -131,7 +136,7 @@ set t_Co=256
 set mouse=nv
 " set the underline of current cursor
 set cursorline
-" auto indent
+" set auto indent
 set ai           
 " set for indentLine
 set tabstop=2
