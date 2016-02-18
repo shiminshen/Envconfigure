@@ -79,6 +79,13 @@ Plug 'https://github.com/mattn/emmet-vim.git'
 " html highlight matched tags plugins
 Plug 'https://github.com/Valloric/MatchTagAlways.git'
 
+" smart colon and semicolon insert
+Plug 'https://github.com/lfilho/cosco.vim.git'
+" config cosco
+command! CommaOrSemiColon call cosco#commaOrSemiColon()
+autocmd FileType javascript,css,YOUR_LANG nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css,YOUR_LANG inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
+
 "unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 Plug 'https://github.com/Shougo/neomru.vim.git'
