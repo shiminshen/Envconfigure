@@ -109,7 +109,8 @@ Plug 'https://github.com/wavded/vim-stylus.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 
 " react-snippets
-Plug 'justinj/vim-react-snippets'
+" Plug 'justinj/vim-react-snippets'
+Plug 'https://github.com/greg-js/vim-react-es6-snippets.git'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
