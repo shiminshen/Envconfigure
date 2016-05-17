@@ -11,7 +11,8 @@ endif
 call plug#begin('~/.vim/plugged')
 " My Bundles here:
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'flazz/vim-colorschemes'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'bling/vim-airline'
@@ -60,6 +61,7 @@ Plug 'https://github.com/suan/vim-instant-markdown.git'
 
 " plugin for javascript.
 Plug 'jelera/vim-javascript-syntax'
+" Plug 'https://github.com/maksimr/vim-jsbeautify.git'
 Plug 'pangloss/vim-javascript'
 
 " better indent format
