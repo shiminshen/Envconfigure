@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 # install develope tools
-brew install zsh tmux git-extras
+brew install tmux git-extras
 
 # install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
