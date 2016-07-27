@@ -59,8 +59,11 @@ Plug 'https://github.com/plasticboy/vim-markdown.git'
 " markdown realtime preview plugin
 Plug 'https://github.com/suan/vim-instant-markdown.git'
 
+
+Plug 'isRuslan/vim-es6'
+
 " plugin for javascript.
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
 " Plug 'https://github.com/maksimr/vim-jsbeautify.git'
 Plug 'pangloss/vim-javascript'
 
