@@ -75,6 +75,9 @@ Plug 'mxw/vim-jsx'
 " enable in .js files.
 let g:jsx_ext_required = 0
 
+" python indent
+Plug 'hynek/vim-python-pep8-indent'
+
 " plugin for buffer navigator 
 " Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
 Plug 'NLKNguyen/easy-navigate.vim'
