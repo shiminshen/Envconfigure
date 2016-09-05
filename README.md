@@ -13,5 +13,5 @@ Requirement
 Usage
 ---
 ```
-sh setup.sh
+bash setup.sh
 ```
