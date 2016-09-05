@@ -2,8 +2,11 @@
 
 case `uname` in
   'Linux' )
-    # install linuxbrew
+    # install essential tools
     sudo apt-get install -y zsh curl ruby
+    # install dependency of youcompleteme
+    sudo apt-get install -y build-essential cmake python-dev python3-dev
+    # install linuxbrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
     PATH="$HOME/.linuxbrew/bin:$PATH"
     echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.bash_profile
