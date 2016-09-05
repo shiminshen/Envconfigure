@@ -3,7 +3,7 @@
 case `uname` in
   'Linux' )
     # install linuxbrew
-    sudo apt-get install zsh curl ruby
+    sudo apt-get install -y zsh curl ruby
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
     PATH="$HOME/.linuxbrew/bin:$PATH"
     echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.bash_profile
