@@ -19,8 +19,8 @@ brew install tmux git git-extras
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
 
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
-echo '[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.bashrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
 
 # install stable node
 nvm install stable
@@ -39,6 +39,9 @@ sudo chsh -s $(which zsh)
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+if [[ `uname`='Linux' ]]; then
+  echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
+fi
+
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
 echo '[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.zshrc
-echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
