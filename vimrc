@@ -85,6 +85,16 @@ Plug 'NLKNguyen/easy-navigate.vim'
 " error detect plugin
 Plug 'https://github.com/scrooloose/syntastic.git'
 
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec='eslint'
+
+" check js syntax
+" Plug 'wookiehangover/jshint.vim'
+
 " html autocomplete plugins
 Plug 'https://github.com/mattn/emmet-vim.git'
 
