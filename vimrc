@@ -59,6 +59,9 @@ Plug 'https://github.com/plasticboy/vim-markdown.git'
 " markdown realtime preview plugin
 Plug 'https://github.com/suan/vim-instant-markdown.git'
 
+Plug 'alvan/vim-closetag'
+" filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
 Plug 'isRuslan/vim-es6'
 
