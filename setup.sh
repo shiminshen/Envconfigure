@@ -17,7 +17,7 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras
+brew install tmux git git-extras ag
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
@@ -29,7 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install stable
 
 # install develope tools
-npm install -g instant-markdown-d diff-so-fancy
+npm install -g instant-markdown-d diff-so-fancy nodemon
 
 # install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
