@@ -22,11 +22,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
 Plug 'git://github.com/tpope/vim-surround.git' 
-Plug 'git://github.com/digitaltoad/vim-jade.git'
+" Plug 'git://github.com/digitaltoad/vim-jade.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
-"Plug 'https://github.com/rking/ag.vim.git'
+" Plug 'https://github.com/rking/ag.vim.git'
 
 " Plug for git
 Plug 'https://github.com/jreybert/vimagit.git'

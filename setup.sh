@@ -17,7 +17,7 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras ag
+brew install tmux git git-extras ag fzf
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
