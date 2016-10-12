@@ -35,7 +35,7 @@ npm install -g instant-markdown-d diff-so-fancy nodemon
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -fs "$PWD/vimrc" "$HOME/.vimrc"
-ln -fs "$PWD/tmux.conf" "$HOME/.tmux.conf"
+ln -fs "$PWD/tmux-config/.tmux.conf" "$HOME/.tmux.conf"
 
 sudo chsh -s $(which zsh)
 
