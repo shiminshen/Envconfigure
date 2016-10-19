@@ -3,7 +3,7 @@
 case `uname` in
   'Linux' )
     # install essential tools
-    sudo apt-get install -y zsh curl ruby
+    sudo apt-get install -y vim zsh curl ruby
     # install dependency of youcompleteme
     sudo apt-get install -y build-essential cmake python-dev python3-dev
     # install linuxbrew
