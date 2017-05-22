@@ -100,6 +100,11 @@ let g:syntastic_javascript_eslint_exec='eslint'
 
 " html autocomplete plugins
 Plug 'https://github.com/mattn/emmet-vim.git'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " html highlight matched tags plugins
 Plug 'https://github.com/Valloric/MatchTagAlways.git'
