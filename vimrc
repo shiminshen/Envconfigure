@@ -76,9 +76,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'Chiel92/vim-autoformat'
 
 " jsx plugin
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 " enable in .js files.
 let g:jsx_ext_required = 0
+
+Plug 'chemzqm/vim-jsx-improve'
+
 
 " python indent
 Plug 'hynek/vim-python-pep8-indent'
