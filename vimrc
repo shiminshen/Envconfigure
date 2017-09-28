@@ -20,6 +20,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree' 
 
+Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
@@ -82,26 +83,12 @@ let g:jsx_ext_required = 0
 
 Plug 'chemzqm/vim-jsx-improve'
 
-
 " python indent
 Plug 'hynek/vim-python-pep8-indent'
 
 " plugin for buffer navigator 
 " Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
 Plug 'NLKNguyen/easy-navigate.vim'
-
-" error detect plugin
-Plug 'https://github.com/scrooloose/syntastic.git'
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec='eslint'
-
-" check js syntax
-" Plug 'wookiehangover/jshint.vim'
 
 " html autocomplete plugins
 Plug 'https://github.com/mattn/emmet-vim.git'
@@ -113,6 +100,18 @@ let g:user_emmet_settings = {
 
 " html highlight matched tags plugins
 Plug 'https://github.com/Valloric/MatchTagAlways.git'
+
+Plug 'w0rp/ale'
+
+" Put this in vimrc or a plugin file of your own.
+" After this is configured, :ALEFix will try and fix your JS code with ESLint.
+let g:ale_fixers = {
+\   'javascript': ['standard'],
+\}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 1
 
 " smart colon and semicolon insert
 Plug 'https://github.com/lfilho/cosco.vim.git'
@@ -222,7 +221,8 @@ let g:jsdoc_input_description = 1
 let g:jsdoc_enable_es6 = 1
 
 " airline
-set guifont=Inconsolara\ for\ Powerline:h24
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+
 set laststatus=2
 let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1

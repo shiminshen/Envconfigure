@@ -29,7 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install stable
 
 # install develope tools
-npm install -g instant-markdown-d diff-so-fancy nodemon npm-check-update
+npm install -g instant-markdown-d diff-so-fancy nodemon npm-check-update standard
 
 # install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
