@@ -15,7 +15,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'flazz/vim-colorschemes'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree' 
@@ -25,11 +25,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
 Plug 'git://github.com/tpope/vim-surround.git' 
-" Plug 'git://github.com/digitaltoad/vim-jade.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
-" Plug 'https://github.com/rking/ag.vim.git'
+Plug 'https://github.com/rking/ag.vim.git'
+Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
 " Plug for git
 Plug 'https://github.com/jreybert/vimagit.git'
@@ -221,7 +221,9 @@ let g:jsdoc_input_description = 1
 let g:jsdoc_enable_es6 = 1
 
 " airline
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+set guifont=DroidSansMono_Nerd_Font:h22
+
 
 set laststatus=2
 let g:airline_theme='bubblegum'
@@ -253,9 +255,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 
 "youcompleteme
-"let g:ycm_server_use_vim_stdout = 1
-"let g:ycm_server_log_level = 'debug'
-"let g:EclimCompletionMethod = 'omnifunc'
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
+let g:EclimCompletionMethod = 'omnifunc'
 
 "gvim
 "set nocompatible
