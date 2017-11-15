@@ -24,12 +24,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
+Plug 'https://github.com/rking/ag.vim.git'
 Plug 'git://github.com/tpope/vim-surround.git' 
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
+
+" use * to search selected text in visual mode
+vmap * <Plug>AgActionVisual
 
 " Plug for git
 Plug 'https://github.com/jreybert/vimagit.git'
