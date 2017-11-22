@@ -57,7 +57,8 @@ Plug 'https://github.com/ihacklog/HiCursorWords.git'
 " switch the position of split windows
 Plug 'wesQ3/vim-windowswap'
 " smooth C-F, C-B
-Plug 'yonchu/accelerated-smooth-scroll'
+Plug 'yuttie/comfortable-motion.vim'
+
 " show git diff in the gutter
 Plug 'mhinz/vim-signify'
 
@@ -76,6 +77,7 @@ Plug 'isRuslan/vim-es6'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'https://github.com/maksimr/vim-jsbeautify.git'
 Plug 'pangloss/vim-javascript'
+" Plug 'othree/yajs.vim'
 
 " better indent format
 Plug 'Chiel92/vim-autoformat'
@@ -181,7 +183,7 @@ set encoding=utf-8
 set t_Co=256
 set mouse=nv
 " set the underline of current cursor
-set cursorline
+" set cursorline
 " set auto indent
 set ai           
 " set for indentLine
