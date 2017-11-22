@@ -14,11 +14,12 @@ Plug 'tpope/vim-fugitive'
 " Plug 'kien/ctrlp.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/nerdtree' 
+Plug 'scrooloose/nerdtree'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
@@ -26,6 +27,8 @@ Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
 Plug 'https://github.com/rking/ag.vim.git'
 Plug 'git://github.com/tpope/vim-surround.git' 
+" Plug 'ternjs/tern_for_vim'
+
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -252,7 +255,7 @@ map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>l <Plug>(easymotion-lineforward)
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 let g:EasyMotion_smartcase = 1
 
 " expand region
