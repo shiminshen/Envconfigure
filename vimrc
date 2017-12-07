@@ -96,8 +96,8 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'hynek/vim-python-pep8-indent'
 
 " plugin for buffer navigator 
-" Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
-Plug 'NLKNguyen/easy-navigate.vim'
+Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
+" Plug 'NLKNguyen/easy-navigate.vim'
 
 " html autocomplete plugins
 Plug 'https://github.com/mattn/emmet-vim.git'
