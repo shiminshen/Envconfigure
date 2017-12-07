@@ -27,7 +27,7 @@ Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
 Plug 'https://github.com/rking/ag.vim.git'
 Plug 'git://github.com/tpope/vim-surround.git' 
-" Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim'
 
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
