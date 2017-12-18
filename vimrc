@@ -10,6 +10,7 @@ endif
 " start vim-plug
 call plug#begin('~/.vim/plugged')
 " My Bundles here:
+
 Plug 'tpope/vim-fugitive'
 " Plug 'kien/ctrlp.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
@@ -79,21 +80,19 @@ Plug 'isRuslan/vim-es6'
 " plugin for javascript.
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'https://github.com/maksimr/vim-jsbeautify.git'
-Plug 'pangloss/vim-javascript'
-" Plug 'othree/yajs.vim'
+" Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 
 " better indent format
 Plug 'Chiel92/vim-autoformat'
 
-" jsx plugin
-Plug 'maxmellon/vim-jsx-pretty'
-" enable in .js files.
-let g:jsx_ext_required = 0
+" !!! slow warning
+" " jsx plugin
+" Plug 'maxmellon/vim-jsx-pretty'
+" " enable in .js files.
+" let g:jsx_ext_required = 0
 
 Plug 'chemzqm/vim-jsx-improve'
-
-" python indent
-Plug 'hynek/vim-python-pep8-indent'
 
 " plugin for buffer navigator 
 Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
@@ -122,13 +121,6 @@ let g:ale_fixers = {
 " This is off by default.
 let g:ale_fix_on_save = 1
 
-" smart colon and semicolon insert
-Plug 'https://github.com/lfilho/cosco.vim.git'
-" config cosco
-command! CommaOrSemiColon call cosco#commaOrSemiColon()
-autocmd FileType javascript,css,YOUR_LANG nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
-autocmd FileType javascript,css,YOUR_LANG inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
-
 "unite
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 Plug 'https://github.com/Shougo/neomru.vim.git'
@@ -137,16 +129,6 @@ Plug 'https://github.com/Shougo/unite.vim.git'
 nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
 nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
 noremap <Leader>f :Unite grep:.<cr>
-
-" plugin for livescript
-Plug 'https://github.com/gkz/vim-ls.git'
-"autocomplie when saving files
-"au BufWritePost *.ls silent LiveScriptMake!
-au BufWritePost *.ls silent LiveScriptMake! | cwindow | redraw!
-"syntax heighlighting for stylus 
-Plug 'https://github.com/wavded/vim-stylus.git'
-" compile when save
-"nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 " multiple-cursors
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
@@ -169,7 +151,6 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'https://github.com/claco/jasmine.vim.git'
 
 " automatic closing of parenthesis
-" Plug 'https://github.com/Raimondi/delimitMate.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 
 " You can specify revision/branch/tag.
