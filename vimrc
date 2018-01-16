@@ -12,8 +12,7 @@ call plug#begin('~/.vim/plugged')
 " My Bundles here:
 
 Plug 'tpope/vim-fugitive'
-" Plug 'kien/ctrlp.vim'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-sensible'
 Plug 'Lokaltog/vim-easymotion'
@@ -23,21 +22,36 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
-Plug 'https://github.com/rking/ag.vim.git'
+" Plug 'https://github.com/rking/ag.vim.git'
+" Plug 'mileszs/ack.vim'
 Plug 'git://github.com/tpope/vim-surround.git' 
 Plug 'ternjs/tern_for_vim'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
+" fzf
+" support ag function by fzf
+noremap <Leader>a :Ag <cword><cr>
+" support ctrlp function by fzf
+noremap <c-p> :GFiles<cr>
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
-
-" use * to search selected text in visual mode
-vmap * <Plug>AgActionVisual
 
 " Plug for git
 Plug 'https://github.com/jreybert/vimagit.git'
@@ -80,8 +94,9 @@ Plug 'isRuslan/vim-es6'
 " plugin for javascript.
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'https://github.com/maksimr/vim-jsbeautify.git'
-" Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+" Plug 'othree/yajs.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " better indent format
 Plug 'Chiel92/vim-autoformat'
@@ -125,10 +140,15 @@ let g:ale_fix_on_save = 1
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 Plug 'https://github.com/Shougo/neomru.vim.git'
 Plug 'https://github.com/Shougo/unite.vim.git'
-" unite config
-nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
-nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
-noremap <Leader>f :Unite grep:.<cr>
+" Unite config
+" nnoremap <silent> <Leader>m :Unite -buffer-name=recent -winheight=10 file_mru<cr>
+" nnoremap <Leader>b :Unite -buffer-name=buffers -winheight=10 buffer<cr>
+" noremap <Leader>f :Unite grep:.<cr>
+" Unite
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " multiple-cursors
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
