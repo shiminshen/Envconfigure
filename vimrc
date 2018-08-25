@@ -97,6 +97,13 @@ Plug 'isRuslan/vim-es6'
 Plug 'pangloss/vim-javascript'
 " Plug 'othree/yajs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+
+Plug 'styled-components/vim-styled-components'
 
 " better indent format
 Plug 'Chiel92/vim-autoformat'
@@ -132,6 +139,10 @@ let g:ale_fixers = {
 \   'javascript': ['standard'],
 \}
 
+" let g:ale_fixers = {
+" \   'javascript': ['prettier-standard'],
+" \}
+
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 let g:ale_fix_on_save = 1
@@ -153,9 +164,6 @@ nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 " multiple-cursors
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 
-" react-snippets
-" Plug 'justinj/vim-react-snippets'
-Plug 'https://github.com/greg-js/vim-react-es6-snippets.git'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -168,7 +176,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'https://github.com/claco/jasmine.vim.git'
+" react-snippets
+" Plug 'justinj/vim-react-snippets'
+Plug 'https://github.com/greg-js/vim-react-es6-snippets.git'
+
+" Plug 'https://github.com/claco/jasmine.vim.git'
 
 " automatic closing of parenthesis
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
