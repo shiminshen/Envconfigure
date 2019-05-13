@@ -20,32 +20,49 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'MarSoft/nerdtree-grep-plugin'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/majutsushi/tagbar.git'
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh'  }
-" Plug 'https://github.com/rking/ag.vim.git'
-" Plug 'mileszs/ack.vim'
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.sh --tern-completer'  }
 Plug 'git://github.com/tpope/vim-surround.git' 
 Plug 'ternjs/tern_for_vim'
 
+" Plug 'thaerkh/vim-workspace'
+" nnoremap <leader>s :ToggleWorkspace<CR>
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
+
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)']  }
+Plug 'romainl/vim-qf'
+
+" grepper
+let g:grepper = { 'open': 0 }
+autocmd User Grepper copen 100
+nnoremap <leader>g :Grepper -highlight -tool ag<cr>
+nnoremap <leader>* :Grepper -highlight -tool ag -cword -noprompt<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
 " fzf
 " support ag function by fzf
-noremap <Leader>a :Ag <cword><cr>
+" noremap <Leader>a :Ag <cword><cr>
 " support ctrlp function by fzf
 noremap <c-p> :GFiles<cr>
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
 Plug 'https://github.com/Yggdroot/indentLine.git'
 " Plug 'https://github.com/tomtom/tcomment_vim.git'
@@ -71,7 +88,7 @@ vmap <Enter> <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 " highlight the word under the cursor
-Plug 'https://github.com/ihacklog/HiCursorWords.git'
+Plug 'mrded/vim-hi-cursor-words'
 " switch the position of split windows
 Plug 'wesQ3/vim-windowswap'
 " smooth C-F, C-B
@@ -80,8 +97,10 @@ Plug 'yuttie/comfortable-motion.vim'
 " show git diff in the gutter
 Plug 'mhinz/vim-signify'
 
+Plug 'chrisbra/vim-diff-enhanced'
+
 " markdown syntax plugin
-Plug 'https://github.com/plasticboy/vim-markdown.git'
+" Plug 'https://github.com/plasticboy/vim-markdown.git'
 " markdown realtime preview plugin
 Plug 'https://github.com/suan/vim-instant-markdown.git'
 
@@ -98,7 +117,7 @@ Plug 'pangloss/vim-javascript'
 " Plug 'othree/yajs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 let g:prettier#config#semi = 'false'
-let g:prettier#config#single_quote = 'false'
+let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
@@ -115,6 +134,8 @@ Plug 'Chiel92/vim-autoformat'
 " let g:jsx_ext_required = 0
 
 Plug 'chemzqm/vim-jsx-improve'
+" vim-react-snippets:
+Plug 'pgilad/vim-react-proptypes-snippets'
 
 " plugin for buffer navigator 
 Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
@@ -276,13 +297,17 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 
-"youcompleteme
+" youcompleteme
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
 let g:EclimCompletionMethod = 'omnifunc'
 
-"gvim
-"set nocompatible
+" Don't show YCM's preview window
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+" gvim
+" set nocompatible
 set background=dark
 colorscheme gruvbox
 
