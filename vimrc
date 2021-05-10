@@ -92,7 +92,7 @@ Plug 'mrded/vim-hi-cursor-words'
 " switch the position of split windows
 Plug 'wesQ3/vim-windowswap'
 " smooth C-F, C-B
-Plug 'yuttie/comfortable-motion.vim'
+" Plug 'yuttie/comfortable-motion.vim'
 
 " show git diff in the gutter
 Plug 'mhinz/vim-signify'
@@ -134,8 +134,6 @@ Plug 'Chiel92/vim-autoformat'
 " let g:jsx_ext_required = 0
 
 Plug 'chemzqm/vim-jsx-improve'
-" vim-react-snippets:
-Plug 'pgilad/vim-react-proptypes-snippets'
 
 " plugin for buffer navigator 
 Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
@@ -154,11 +152,14 @@ Plug 'https://github.com/Valloric/MatchTagAlways.git'
 
 Plug 'w0rp/ale'
 
+" support prettier of xo
+" let g:ale_javascript_xo_options = "--plug=react --prettier"
 " Put this in vimrc or a plugin file of your own.
 " After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
-\   'javascript': ['standard'],
+\  'javascript': ['eslint'],
 \}
+
 
 " let g:ale_fixers = {
 " \   'javascript': ['prettier-standard'],
@@ -190,16 +191,14 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
+" react-snippets
+Plug 'mlaursen/vim-react-snippets', { 'branch': 'main' }
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-" react-snippets
-" Plug 'justinj/vim-react-snippets'
-Plug 'https://github.com/greg-js/vim-react-es6-snippets.git'
 
 " Plug 'https://github.com/claco/jasmine.vim.git'
 
