@@ -5,16 +5,11 @@ require('hop').setup({
 })
 
 vim.keymap.set('n', 'f', function()
-  return require('hop').hint_char2()
+  return require('hop').hint_char1()
 end,
-{ silent = true, noremap = true, desc = "nvim-hop char2"  })
-
-vim.keymap.set('n', '/', function()
-  return require('hop').hint_patterns()
-end,
-{ silent = true, noremap = true, desc = "nvim-hop patterns"  })
+{ silent = true, noremap = true, desc = "nvim-hop char1" })
 
 vim.keymap.set('n', 's', function()
   return require('hop').hint_words()
 end,
-{ silent = true, noremap = true, desc = "nvim-hop words"  })
+{ silent = true, noremap = true, desc = "nvim-hop words" })

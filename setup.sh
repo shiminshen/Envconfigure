@@ -9,7 +9,7 @@ case `uname` in
     # install linuxbrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
     PATH="$HOME/.linuxbrew/bin:$PATH"
-    echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.bash_profile
+    echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bash_profile
     ;;
   'Mac' )
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -32,9 +32,12 @@ nvm install stable
 npm install -g instant-markdown-d diff-so-fancy nodemon npm-check-updates standard
 
 # install tpm for tmux
+git clone https://github.com/gpakosz/.tmux.git
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -fs "$PWD/vimrc" "$HOME/.vimrc"
+mkdir -p "$HOME/.config/nvim/lua"
+ln -fs "$PWD/nvim" "$HOME/.config/nvim"
 ln -fs "$PWD/.tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 sudo chsh -s $(which zsh)
@@ -43,7 +46,7 @@ sudo chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 if [[ `uname`='Linux' ]]; then
-  echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.zshrc
+  echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.zshrc
 fi
 
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
