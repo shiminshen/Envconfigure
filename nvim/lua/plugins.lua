@@ -12,8 +12,24 @@ require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use 'folke/tokyonight.nvim'
+  -- Comment plugin
+  use 'tpope/vim-commentary'
 
+  use {'jdhao/better-escape.vim', event = 'InsertEnter'}
+
+  -- replace clip to m from d
+  use 'svermeulen/vim-easyclip'
+  
+  use 'terryma/vim-multiple-cursors'
+  
+  use 'tpope/vim-surround'
+  
+  use 'tpope/vim-repeat'
+
+  use 'folke/tokyonight.nvim'
+  
+  use 'jreybert/vimagit'
+  
   -- easymotion
   use {
     'phaazon/hop.nvim',
@@ -24,6 +40,12 @@ require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
+  }
+
+  -- git integration
+  use {
+    'lewis6991/gitsigns.nvim',
+    tag = 'release' -- To use the latest release
   }
 
   -- indent
@@ -40,14 +62,11 @@ require('packer').startup(function()
   use 'gelguy/wilder.nvim'
 
   -- better syntax highlight
-  use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate" })
-
-  -- Comment plugin
-  use({"tpope/vim-commentary", event = "VimEnter"})
+  use {'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate'}
 
   use {'neoclide/coc.nvim', branch = 'release'}
 
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

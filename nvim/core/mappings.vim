@@ -7,10 +7,6 @@ set expandtab
 set shiftwidth=2
 
 let mapleader = "\<Space>"
-map! ii <Esc>
-map! ;; <Esc>
-vmap ii <Esc>
-vmap ;; <Esc>
 " map Visual mode blockwise indent
 vmap > >gv
 vmap < <gv
