@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 " My Bundles here:
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 " Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-sensible'
@@ -69,12 +70,17 @@ Plug 'https://github.com/Yggdroot/indentLine.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
+Plug 'mrded/vim-hi-cursor-words'
 
 " Plug for git
 Plug 'https://github.com/jreybert/vimagit.git'
 
 " plug for generating jsdoc
-Plug 'https://github.com/heavenshell/vim-jsdoc.git'
+" Plug 'heavenshell/vim-jsdoc', { 
+"       \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+"       \ 'do': 'make install'
+"       \}
+
 " plugin expand select region
 Plug 'https://github.com/terryma/vim-expand-region.git'
 " extension '.' repeat
@@ -87,8 +93,6 @@ Plug 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-" highlight the word under the cursor
-Plug 'mrded/vim-hi-cursor-words'
 " switch the position of split windows
 Plug 'wesQ3/vim-windowswap'
 " smooth C-F, C-B
@@ -127,12 +131,6 @@ Plug 'styled-components/vim-styled-components'
 " better indent format
 Plug 'Chiel92/vim-autoformat'
 
-" !!! slow warning
-" " jsx plugin
-" Plug 'maxmellon/vim-jsx-pretty'
-" " enable in .js files.
-" let g:jsx_ext_required = 0
-
 Plug 'chemzqm/vim-jsx-improve'
 
 " plugin for buffer navigator 
@@ -140,12 +138,12 @@ Plug 'https://github.com/jeetsukumaran/vim-buffergator.git'
 " Plug 'NLKNguyen/easy-navigate.vim'
 
 " html autocomplete plugins
-Plug 'https://github.com/mattn/emmet-vim.git'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends' : 'jsx',
-\  },
-\}
+" Plug 'https://github.com/mattn/emmet-vim.git'
+" let g:user_emmet_settings = {
+" \  'javascript.jsx' : {
+" \      'extends' : 'jsx',
+" \  },
+" \}
 
 " html highlight matched tags plugins
 Plug 'https://github.com/Valloric/MatchTagAlways.git'
@@ -222,7 +220,7 @@ set mouse=nv
 " set cursorline
 " set auto indent
 set ai           
-" set for indentLine
+" set space for indentLine
 set tabstop=2
 set expandtab
 " set the space of indent
@@ -255,12 +253,6 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 " tagbar
 nmap tb :TagbarToggle<CR>
-
-" js-docs
-nmap <silent> <C-l> <Plug>(jsdoc)
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_enable_es6 = 1
 
 " airline
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11

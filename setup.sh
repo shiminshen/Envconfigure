@@ -17,7 +17,12 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras ag
+brew install tmux git git-extras ag neovim ripgrep fd
+
+# install font for vim
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
@@ -36,7 +41,6 @@ git clone https://github.com/gpakosz/.tmux.git
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -fs "$PWD/vimrc" "$HOME/.vimrc"
-mkdir -p "$HOME/.config/nvim/lua"
 ln -fs "$PWD/nvim" "$HOME/.config/nvim"
 ln -fs "$PWD/.tmux/.tmux.conf" "$HOME/.tmux.conf"
 

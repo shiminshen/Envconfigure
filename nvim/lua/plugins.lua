@@ -61,10 +61,25 @@ require('packer').startup(function()
   -- cmd autocomplete
   use 'gelguy/wilder.nvim'
 
+  -- show key bindings hint
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
   -- better syntax highlight
   use {'nvim-treesitter/nvim-treesitter', event = 'BufEnter', run = ':TSUpdate'}
 
   use {'neoclide/coc.nvim', branch = 'release'}
+
+  -- react snippet for coc-snippets
+  use {'mlaursen/vim-react-snippets'}
 
   use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
 
