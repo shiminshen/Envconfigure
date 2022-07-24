@@ -7,6 +7,7 @@ augroup packer_user_config
 augroup end
 
 let s:core_conf_files = [
+      \ 'autocommands.vim',
       \ 'mappings.vim',
       \ 'plugins.vim',
       \ ]

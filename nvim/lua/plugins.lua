@@ -22,13 +22,15 @@ require('packer').startup(function()
   
   use 'terryma/vim-multiple-cursors'
   
-  use 'tpope/vim-surround'
-  
   use 'tpope/vim-repeat'
 
   use 'folke/tokyonight.nvim'
   
   use 'jreybert/vimagit'
+
+  -- Plugin to manipulate character pairs quickly
+  -- use 'tpope/vim-surround'
+  use {'machakann/vim-sandwich', event = 'VimEnter'}
   
   -- easymotion
   use {
@@ -63,9 +65,9 @@ require('packer').startup(function()
 
   -- show key bindings hint
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
     config = function()
-      require("which-key").setup {
+      require('which-key').setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
