@@ -85,6 +85,7 @@ require('packer').startup(function()
 
   -- react snippet for coc-snippets
   use {'mlaursen/vim-react-snippets'}
+  use {'honza/vim-snippets'}
 
   use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
 
