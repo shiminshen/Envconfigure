@@ -27,6 +27,8 @@ require('packer').startup(function()
   use 'folke/tokyonight.nvim'
   
   use 'jreybert/vimagit'
+  
+  use 'alvan/vim-closetag' 
 
   -- Plugin to manipulate character pairs quickly
   -- use 'tpope/vim-surround'
