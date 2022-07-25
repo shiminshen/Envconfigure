@@ -11,17 +11,21 @@ case `uname` in
     PATH="$HOME/.linuxbrew/bin:$PATH"
     echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bash_profile
     ;;
-  'Mac' )
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  'Darwin' )
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/damon/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     brew install zsh
     ;;
 esac
 
-brew install tmux git git-extras ag neovim ripgrep fd
+brew install tmux git git-extras ag neovim ripgrep fd tig
 
 # install font for vim
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
+
+pip3 install pynvim
 
 
 # install nvm
@@ -41,6 +45,7 @@ git clone https://github.com/gpakosz/.tmux.git
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -fs "$PWD/vimrc" "$HOME/.vimrc"
+ln -fs "$PWD/zshrc" "$HOME/.zshrc"
 ln -fs "$PWD/nvim" "$HOME/.config/nvim"
 ln -fs "$PWD/.tmux/.tmux.conf" "$HOME/.tmux.conf"
 

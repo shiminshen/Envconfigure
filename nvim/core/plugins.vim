@@ -40,6 +40,7 @@ nnoremap <silent><C-h> :BufferLineMovePrev<CR>
 
 
 """""" coc
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json']
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8

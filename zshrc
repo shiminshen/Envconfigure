@@ -10,8 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-export EDITOR='vim'
+export EDITOR='nvim'
 # alias
+alias vi='nvim'
 alias tmux='tmux -2'
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
