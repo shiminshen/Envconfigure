@@ -1,5 +1,4 @@
 lua require('plugins')
-lua require('init')
 
 augroup packer_user_config
   autocmd!

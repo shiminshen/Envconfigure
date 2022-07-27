@@ -11,6 +11,11 @@ nnoremap <C-p>      <cmd>Telescope git_files<cr>
 """""" wilder.nvim
 call wilder#setup({'modes': [':', '/', '?']})
 
+call wilder#set_option('renderer', wilder#renderer_mux({
+      \ ':': wilder#popupmenu_renderer(),
+      \ '/': wilder#wildmenu_renderer(),
+      \ }))
+
 call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline(),
@@ -228,3 +233,6 @@ let g:coc_snippet_next = '<tab>'
 
 """""" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
+
+"""""" markdown-preview
+let g:mkdp_auto_start = 1

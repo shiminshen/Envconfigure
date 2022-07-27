@@ -26,9 +26,22 @@ require('packer').startup(function()
 
   use 'folke/tokyonight.nvim'
   
-  use 'jreybert/vimagit'
+  use { 'jreybert/vimagit' }
+
+  use {
+    'ruifm/gitlinker.nvim',
+    config = function()
+      require"gitlinker".setup()
+    end
+  }
+
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
+
   
-  use 'alvan/vim-closetag' 
+  use { 'alvan/vim-closetag' } 
 
   -- Plugin to manipulate character pairs quickly
   -- use 'tpope/vim-surround'
@@ -38,32 +51,42 @@ require('packer').startup(function()
   use {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
+    config = [[require('config.hop')]]
   }
 
   -- file explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
+    config = [[require('config.nvim-tree')]]
   }
 
   -- git integration
   use {
     'lewis6991/gitsigns.nvim',
-    tag = 'release' -- To use the latest release
+    tag = 'release', -- To use the latest release
+    config = [[require('config.gitsigns')]]
   }
 
   -- indent
-  use 'lukas-reineke/indent-blankline.nvim'
+  use {
+   'lukas-reineke/indent-blankline.nvim', 
+    config = [[require('config.bufferline')]]
+  }
 
   -- file searching
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = [[require('config.telescope')]]
   }
 
   -- cmd autocomplete
-  use 'gelguy/wilder.nvim'
+  use {
+    'gelguy/wilder.nvim',
+    config = [[require('config.wilder')]]
+  }
 
   -- show key bindings hint
   use {
@@ -81,6 +104,7 @@ require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    config = [[require('config.treesitter')]]
   }
 
   use {'neoclide/coc.nvim', branch = 'release'}
@@ -90,7 +114,12 @@ require('packer').startup(function()
   use {'honza/vim-snippets'}
   use {'isRuslan/vim-es6'}
 
-  use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'akinsho/bufferline.nvim',
+    tag = 'v2.*', 
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = [[require('config.bufferline')]]
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,6 +1,7 @@
 Setup developer tools
 ===
 Setup vim with [vim-plug](https://github.com/junegunn/vim-plug) to install plugins by link vimrc to your .vimrc
+Setup nvim with [packer](https://github.com/wbthomason/packer.nvim) to install plugins by link nvim to your .config/nvim
 
 Requirement
 ---
