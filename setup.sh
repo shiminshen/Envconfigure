@@ -54,6 +54,10 @@ sudo chsh -s $(which zsh)
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# install fzf-git
+git clone https://github.com/hschne/fzf-git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-git
+
+
 if [[ `uname`='Linux' ]]; then
   echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.zshrc
 fi
