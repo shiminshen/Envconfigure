@@ -28,20 +28,27 @@ require('packer').startup(function()
   
   use { 'jreybert/vimagit' }
 
+  use { 'alvan/vim-closetag' } 
+  
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup()
+    end
+  }
+  
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
+  
   use {
     'ruifm/gitlinker.nvim',
     config = function()
       require"gitlinker".setup()
     end
   }
-
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  }
-
-  
-  use { 'alvan/vim-closetag' } 
 
   -- Plugin to manipulate character pairs quickly
   -- use 'tpope/vim-surround'
