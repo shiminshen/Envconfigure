@@ -31,7 +31,7 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
 """""" better-escape.vim
 " use ii to escape insert mode.
 let g:better_escape_shortcut = 'ii'
-let g:better_escape_interval = 200
+let g:better_escape_interval = 300
 
 
 """""" bufferline
