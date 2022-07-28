@@ -9,7 +9,7 @@ vim.keymap.set('n', 'f', function()
 end,
 { silent = true, noremap = true, desc = "nvim-hop char1" })
 
--- vim.keymap.set('n', 's', function()
---   return require('hop').hint_words()
+-- vim.keymap.set('n', '/', function()
+--   return require('hop').hint_patterns()
 -- end,
 -- { silent = true, noremap = true, desc = "nvim-hop words" })

@@ -1,3 +1,4 @@
+lua require('init')
 """""" telescope.nvim
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
