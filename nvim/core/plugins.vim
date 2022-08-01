@@ -9,24 +9,9 @@ nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fe <cmd>Telescope buffers<cr>
 nnoremap <C-p>      <cmd>Telescope git_files<cr>
 
-"""""" wilder.nvim
-call wilder#setup({'modes': [':', '/', '?']})
-
-call wilder#set_option('renderer', wilder#renderer_mux({
-      \ ':': wilder#popupmenu_renderer(),
-      \ '/': wilder#wildmenu_renderer(),
-      \ }))
-
-call wilder#set_option('pipeline', [
-      \   wilder#branch(
-      \     wilder#cmdline_pipeline(),
-      \     wilder#search_pipeline(),
-      \   ),
-      \ ])
-
-call wilder#set_option('renderer', wilder#wildmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ }))
+"""""" FIXME easymotion searching
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 
 """""" better-escape.vim
 " use ii to escape insert mode.
@@ -46,7 +31,7 @@ nnoremap <silent><C-h> :BufferLineMovePrev<CR>
 
 
 """""" coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint']
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -220,8 +205,9 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Make <tab> used for trigger completion, completion confirm, snippet expand
 " and jump like VSCode.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ?
+      \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
@@ -232,8 +218,13 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+"""""" coc-highlight
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 """""" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
 """""" markdown-preview
 let g:mkdp_auto_start = 1
+
+

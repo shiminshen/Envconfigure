@@ -61,6 +61,9 @@ require('packer').startup(function()
     config = [[require('config.hop')]]
   }
 
+  -- FIXME tmp patch for hop in searching
+  use { 'easymotion/vim-easymotion' }
+
   -- file explorer
   use {
     'kyazdani42/nvim-tree.lua',
