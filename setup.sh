@@ -54,6 +54,7 @@ sudo chsh -s $(which zsh)
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+source ~/.zshrc
 # install fzf-git
 git clone https://github.com/hschne/fzf-git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-git
 
