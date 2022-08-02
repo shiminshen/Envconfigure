@@ -204,10 +204,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 """""" coc-snippets
 " Make <tab> used for trigger completion, completion confirm, snippet expand
 " and jump like VSCode.
+" https://github.com/neoclide/coc.nvim/wiki/Using-snippets#configure-snippets-workflow
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ?
-      \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
@@ -226,5 +226,4 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
 """""" markdown-preview
 let g:mkdp_auto_start = 1
-
 

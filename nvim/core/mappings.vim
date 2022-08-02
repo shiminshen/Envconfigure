@@ -1,5 +1,8 @@
 colorscheme tokyonight
 
+set ignorecase
+set smartcase
+
 " set space for indentLine
 set tabstop=2
 set expandtab

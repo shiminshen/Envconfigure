@@ -117,7 +117,11 @@ require('packer').startup(function()
     config = [[require('config.treesitter')]]
   }
 
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use {
+    'neoclide/coc.nvim',
+    tag = 'v0.0.81', 
+    -- branch = 'release',
+  }
 
   -- react snippet for coc-snippets
   use {'mlaursen/vim-react-snippets'}
