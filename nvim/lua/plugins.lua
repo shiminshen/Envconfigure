@@ -26,7 +26,11 @@ require('packer').startup(function()
 
   use 'folke/tokyonight.nvim'
   
-  use { 'jreybert/vimagit' }
+  -- use { 'jreybert/vimagit' }
+  use {
+    'TimUntersberger/neogit',
+    config = [[require('config.neogit')]],
+  }
 
   use { 'alvan/vim-closetag' } 
   
