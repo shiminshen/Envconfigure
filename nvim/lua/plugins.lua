@@ -29,8 +29,10 @@ require('packer').startup(function()
   -- use { 'jreybert/vimagit' }
   use {
     'TimUntersberger/neogit',
+    requires = { { 'nvim-lua/plenary.nvim' }, { 'sindrets/diffview.nvim' } },
     config = [[require('config.neogit')]],
   }
+  
 
   use { 'alvan/vim-closetag' } 
   
