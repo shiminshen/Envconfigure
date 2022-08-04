@@ -11,8 +11,7 @@ require('telescope').setup{
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-        ["d"] = 'delete_buffer',
-      }
+      },
     },
     layout_config = {
       width = 0.95,
@@ -28,6 +27,13 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    buffers = {
+      mappings = {
+        i = {
+          ["<C-e>"] = 'delete_buffer',
+        }
+      }
+    }       
   },
   extensions = {
     -- Your extension configuration goes here:

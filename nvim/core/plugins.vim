@@ -225,4 +225,4 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
 """""" markdown-preview
-let g:mkdp_auto_start = 1
+" let g:mkdp_auto_start = 1
