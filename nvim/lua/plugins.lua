@@ -33,6 +33,7 @@ require('packer').startup(function()
     config = [[require('config.neogit')]],
   }
   
+  use { 'lewis6991/impatient.nvim' }
 
   use { 'alvan/vim-closetag' } 
   

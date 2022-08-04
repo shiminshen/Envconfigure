@@ -1,7 +1,4 @@
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
+lua require('impatient')
 
 let s:core_conf_files = [
       \ 'autocommands.vim',
