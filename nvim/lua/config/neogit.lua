@@ -15,7 +15,7 @@ neogit.setup {
     --   }
     -- }
     diffview = true
-  }
+  },
 }
 
 vim.keymap.set('n', '<Leader>M', ':Neogit<CR>',  { noremap = true, silent = true })

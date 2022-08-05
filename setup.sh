@@ -19,7 +19,7 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras ag neovim ripgrep fd tig
+brew install tmux git git-extras ag neovim ripgrep fd tig fig
 
 # install font for vim
 brew tap homebrew/cask-fonts

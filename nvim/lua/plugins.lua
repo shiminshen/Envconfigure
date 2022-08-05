@@ -127,8 +127,7 @@ require('packer').startup(function()
   use {
     'neoclide/coc.nvim',
     -- FIXME break change at v0.0.82
-    tag = 'v0.0.81', 
-    -- branch = 'release',
+    branch = 'release',
   }
 
   -- react snippet for coc-snippets
