@@ -1,4 +1,5 @@
 local actions = require('telescope.actions')
+local action_layout = require('telescope.actions.layout')
 
 require('telescope').setup{
   defaults = {
@@ -11,14 +12,19 @@ require('telescope').setup{
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<C-s>"] = action_layout.toggle_preview,
         ["<esc>"] = actions.close,
       },
     },
-    layout_config = {
-      width = 0.95,
-      preview_width = 0.6,
+    preview = {
+      hide_on_startup = true  
     },
-    path_display = { shorten = 1 }
+    layout_config = {
+      preview_cutoff  = 0,
+      width = 0.95,
+      preview_width = 0.8,
+    },
+    path_display = { shorten = 2 }
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
