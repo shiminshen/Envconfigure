@@ -91,6 +91,13 @@ require('packer').startup(function()
     config = [[require('config.bufferline')]]
   }
 
+  -- better buffer navigation
+  use {
+    "ThePrimeagen/harpoon",
+    event = "VimEnter",
+    config = [[require('config.harpoon')]]
+  }
+
   -- file searching
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -108,13 +115,7 @@ require('packer').startup(function()
   -- show key bindings hint
   use {
     'folke/which-key.nvim',
-    config = function()
-      require('which-key').setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
+    config = [[require('config.which-key')]]
   }
 
   -- better syntax highlight

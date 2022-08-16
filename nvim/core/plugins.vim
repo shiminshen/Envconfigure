@@ -203,6 +203,9 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 """""" coc-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"""""" coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
 """""" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
