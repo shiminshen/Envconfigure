@@ -136,6 +136,9 @@ require('packer').startup(function()
   use {'honza/vim-snippets'}
   use {'isRuslan/vim-es6'}
 
+  use {'liuchengxu/vista.vim'}
+
+  -- show upper buffer line
   use {
     'akinsho/bufferline.nvim',
     tag = 'v2.*', 

@@ -25,6 +25,10 @@ brew install tmux git git-extras ag neovim ripgrep fd tig fig
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 
+# install ctag for vista (tagbar)
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+
 pip3 install pynvim
 
 

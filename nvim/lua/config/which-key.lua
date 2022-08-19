@@ -1,7 +1,7 @@
 local wk = require('which-key')
 
 wk.register({
-    -- Jump
+  -- Jump
   j = {
     name = "Jump",
     a = { "<Cmd>lua require('harpoon.mark').add_file()<Cr>", "Add" },
@@ -13,3 +13,10 @@ wk.register({
   ["4"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(1)<Cr>", "Terminal" },
 }, { prefix = "<leader>" })
 
+wk.register({
+  -- vista tagbar
+  t = {
+    name = "Tag bar",
+    b = { "<Cmd>Vista!!<Cr>", "Toggle tab bar" },
+  },
+}, {})
