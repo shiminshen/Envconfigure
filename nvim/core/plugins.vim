@@ -208,6 +208,7 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 """""" vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
+let g:closetag_enable_react_fragment = 1
 
 """""" markdown-preview
 " let g:mkdp_auto_start = 1

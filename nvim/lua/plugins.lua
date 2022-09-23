@@ -20,7 +20,8 @@ require('packer').startup(function()
   -- replace clip to m from d
   use 'svermeulen/vim-easyclip'
   
-  use 'terryma/vim-multiple-cursors'
+  -- use 'terryma/vim-multiple-cursors'
+  use { 'mg979/vim-visual-multi' }
   
   use 'tpope/vim-repeat'
 
@@ -47,7 +48,7 @@ require('packer').startup(function()
   
   use {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    run = function() vim.fn["mkdp#util#install"]() end,let
   }
   
   use {
