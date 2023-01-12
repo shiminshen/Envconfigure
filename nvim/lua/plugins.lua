@@ -34,6 +34,14 @@ require('packer').startup(function()
     config = [[require('config.neogit')]],
   }
   
+  use {
+    'akinsho/git-conflict.nvim',
+    tag = "*",
+    config = function()
+      require('git-conflict').setup()
+    end
+  }
+  
   use { 'lewis6991/impatient.nvim' }
 
   use { 'alvan/vim-closetag' } 
@@ -48,7 +56,7 @@ require('packer').startup(function()
   
   use {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,let
+    run = function() vim.fn["mkdp#util#install"]() end
   }
   
   use {
@@ -56,6 +64,12 @@ require('packer').startup(function()
     config = function()
       require"gitlinker".setup()
     end
+  }
+
+  -- jsdoc generator
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()'
   }
 
   -- Plugin to manipulate character pairs quickly
