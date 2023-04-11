@@ -59,6 +59,7 @@ require('packer').startup(function()
     run = function() vim.fn["mkdp#util#install"]() end
   }
   
+  -- <leader>gy for normal and visual mode
   use {
     'ruifm/gitlinker.nvim',
     config = function()
@@ -145,6 +146,9 @@ require('packer').startup(function()
     -- FIXME break change at v0.0.82
     branch = 'release',
   }
+  
+  -- github copilot
+  use {'github/copilot.vim'}
 
   -- react snippet for coc-snippets
   use {'mlaursen/vim-react-snippets'}
