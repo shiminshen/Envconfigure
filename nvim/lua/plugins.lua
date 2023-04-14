@@ -97,7 +97,7 @@ require('packer').startup(function()
   -- git integration
   use {
     'lewis6991/gitsigns.nvim',
-    tag = 'release', -- To use the latest release
+    tag = 'v0.5', -- To use the latest release
     config = [[require('config.gitsigns')]]
   }
 
@@ -137,7 +137,10 @@ require('packer').startup(function()
   -- better syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
     config = [[require('config.treesitter')]]
   }
 
