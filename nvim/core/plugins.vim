@@ -31,7 +31,7 @@ nnoremap <silent><C-h> :BufferLineMovePrev<CR>
 
 
 """""" coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint', 'coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint', 'coc-prettier', '@yaegassy/coc-tailwindcss3']
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
