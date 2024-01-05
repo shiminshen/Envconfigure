@@ -24,7 +24,7 @@ require('telescope').setup{
       width = 0.95,
       preview_width = 0.8,
     },
-    path_display = { shorten = 2 }
+    path_display = { shorten = 6 }
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:

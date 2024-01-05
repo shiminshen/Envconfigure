@@ -19,7 +19,7 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras ag neovim ripgrep fd tig fig
+brew install tmux git git-extras ag neovim ripgrep fd tig fig fzf
 
 # install font for vim
 brew tap homebrew/cask-fonts
@@ -46,12 +46,13 @@ npm install -g instant-markdown-d diff-so-fancy nodemon npm-check-updates standa
 
 # install tpm for tmux
 git clone https://github.com/gpakosz/.tmux.git
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -fs "$PWD/vimrc" "$HOME/.vimrc"
 ln -fs "$PWD/zshrc" "$HOME/.zshrc"
 ln -fs "$PWD/nvim" "$HOME/.config/nvim"
 ln -fs "$PWD/.tmux/.tmux.conf" "$HOME/.tmux.conf"
+# cp "$PWD/.tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
 
 sudo chsh -s $(which zsh)
 
