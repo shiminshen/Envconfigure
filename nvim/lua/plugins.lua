@@ -103,8 +103,10 @@ require('packer').startup(function()
 
   -- indent
   use {
-   'lukas-reineke/indent-blankline.nvim', 
-    config = [[require('config.bufferline')]]
+    'lukas-reineke/indent-blankline.nvim', 
+    config = function()
+      require('ibl').setup()
+    end
   }
 
   -- better buffer navigation
