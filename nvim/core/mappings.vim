@@ -1,5 +1,3 @@
-colorscheme tokyonight
-
 set ignorecase
 set smartcase
 

@@ -1,4 +1,4 @@
-lua require('impatient')
+lua require('init')
 
 let s:core_conf_files = [
       \ 'autocommands.vim',
