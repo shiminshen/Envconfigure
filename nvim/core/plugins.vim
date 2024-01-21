@@ -1,29 +1,12 @@
-lua require('init')
-"""""" telescope.nvim
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>*  <cmd>Telescope grep_string<cr>
-nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
-nnoremap <leader>fe <cmd>Telescope buffers<cr>
-nnoremap <C-p>      <cmd>Telescope git_files<cr>
-
 """""" FIXME easymotion searching
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-"""""" better-escape.vim
-" use ii to escape insert mode.
-let g:better_escape_shortcut = 'ii'
-let g:better_escape_interval = 300
-
-
 """""" bufferline
 " These commands will navigate through buffers in order regardless of which mode you are using
 " e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent>[b :BufferLineCycleNext<CR>
-nnoremap <silent>]b :BufferLineCyclePrev<CR>
+nnoremap <silent><C-j> :BufferLineCycleNext<CR>
+nnoremap <silent><C-k> :BufferLineCyclePrev<CR>
 
 " These commands will move the current buffer backwards or forwards in the bufferline
 nnoremap <silent><C-l> :BufferLineMoveNext<CR>
