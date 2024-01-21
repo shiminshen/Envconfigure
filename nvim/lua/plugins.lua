@@ -74,9 +74,12 @@ return {
     end
   },
   
+  -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   
   -- <leader>gy for normal and visual mode

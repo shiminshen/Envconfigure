@@ -1,6 +1,6 @@
 My Developement Settings
 ===
-Setup nvim with [lazy](https://github.com/folke/lazy.nvim) to install plugins by link nvim to your .config/nvim
+Setup nvim with [lazy.nvim](https://github.com/folke/lazy.nvim) to install plugins by link nvim to your .config/nvim
 
 Requirement
 ---
