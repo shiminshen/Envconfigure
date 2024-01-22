@@ -68,7 +68,7 @@ return {
   
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('lualine').setup()
     end
@@ -99,23 +99,39 @@ return {
   -- Plugin to manipulate character pairs quickly
   -- 'tpope/vim-surround'
   {'machakann/vim-sandwich', event = 'VimEnter'},
-  
-  -- easymotion
+
   {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    },
     config = function()
-      require('config.hop')
+      require("flash").setup({
+        search = {
+          incremental = true,
+        },
+        modes = {
+          char = {
+            -- disabled char by using jump for f in keys
+            enabled = false,
+            -- jump_labels = true
+          }
+        }
+      })
     end
   },
-
+  
   -- FIXME tmp patch for hop in searching
-  { 'easymotion/vim-easymotion' },
+  -- { 'easymotion/vim-easymotion' },
 
   -- file explorer
   {
     'kyazdani42/nvim-tree.lua',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('config.nvim-tree')
     end
@@ -156,11 +172,39 @@ return {
     end
   },
 
-  -- cmd autocomplete
   {
-    'gelguy/wilder.nvim',
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
     config = function()
-      require('config.wilder')
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
+        },
+      })
     end
   },
 
@@ -205,7 +249,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     version = 'v2.*', 
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('config.bufferline')
     end
