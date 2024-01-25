@@ -103,6 +103,7 @@ alias e='exit'
 alias rz='source ~/.zshrc'
 alias kg='k8sgo'
 alias vi='nvim'
+alias v='nvim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.linuxbrew/bin:$PATH"

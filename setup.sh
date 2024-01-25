@@ -19,11 +19,7 @@ case `uname` in
     ;;
 esac
 
-brew install tmux git git-extras ag neovim ripgrep fd tig fig fzf
-
-# install font for vim
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+brew install tmux git git-extras ag neovim ripgrep fd tig fig fzf jesseduffield/lazygit/lazygit
 
 # install ctag for vista (tagbar)
 brew tap universal-ctags/universal-ctags

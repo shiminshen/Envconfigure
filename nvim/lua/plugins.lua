@@ -97,33 +97,49 @@ return {
   },
 
   -- Plugin to manipulate character pairs quickly
-  -- 'tpope/vim-surround'
-  {'machakann/vim-sandwich', event = 'VimEnter'},
-
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    },
+    'echasnovski/mini.surround',
+    version = '*',
     config = function()
-      require("flash").setup({
-        search = {
-          incremental = true,
-        },
-        modes = {
-          char = {
-            -- disabled char by using jump for f in keys
-            enabled = false,
-            -- jump_labels = true
-          }
-        }
-      })
+      require('mini.surround').setup()
     end
   },
+
+
+  {
+    "ggandor/leap.nvim",
+    config = function(_, opts)
+      local leap = require("leap")
+      vim.keymap.set({'n', 'x', 'o'}, 'f', function ()
+        require('leap').leap { target_windows = { vim.api.nvim_get_current_win() } }
+      end)
+    end,
+  },
+
+  --{
+  --  "folke/flash.nvim",
+  --  event = "VeryLazy",
+  --  ---@type Flash.Config
+  --  opts = {},
+  --  -- stylua: ignore
+  --  keys = {
+  --    { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+  --  },
+  --  config = function()
+  --    require("flash").setup({
+  --      search = {
+  --        incremental = true,
+  --      },
+  --      modes = {
+  --        char = {
+  --          -- disabled char by using jump for f in keys
+  --          enabled = false,
+  --          -- jump_labels = true
+  --        }
+  --      }
+  --    })
+  --  end
+  --},
   
   -- FIXME tmp patch for hop in searching
   -- { 'easymotion/vim-easymotion' },
@@ -146,11 +162,20 @@ return {
     end
   },
 
+  {
+    'echasnovski/mini.cursorword',
+    version = '*',
+    config = function()
+      require('mini.cursorword').setup()
+    end
+  },
+
   -- indent
   {
-    'lukas-reineke/indent-blankline.nvim', 
+    'echasnovski/mini.indentscope',
+    version = '*',
     config = function()
-      require('ibl').setup()
+      require('mini.indentscope').setup()
     end
   },
 
