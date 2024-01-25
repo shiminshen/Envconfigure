@@ -21,6 +21,28 @@ return {
     dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      require("aerial").setup({
+        -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+        on_attach = function(bufnr)
+          -- Jump forwards/backwards with '{' and '}'
+          vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+          vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        end,
+      })
+      -- You probably also want to set a keymap to toggle aerial
+      vim.keymap.set("n", "<leader>aa", "<cmd>AerialToggle!<CR>")
+    end
+  },
+
   -- Comment plugin
   'tpope/vim-commentary',
 
@@ -39,6 +61,7 @@ return {
         }
     end,
   },
+  
 
   -- replace clip to m from d
   'svermeulen/vim-easyclip',
@@ -273,7 +296,7 @@ return {
   -- show upper buffer line
   {
     'akinsho/bufferline.nvim',
-    version = 'v2.*', 
+    version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('config.bufferline')
