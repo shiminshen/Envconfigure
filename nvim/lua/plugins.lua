@@ -44,7 +44,13 @@ return {
   },
 
   -- Comment plugin
-  'tpope/vim-commentary',
+  {
+    'echasnovski/mini.comment',
+    version = '*',
+    config = function()
+      require('mini.comment').setup()
+    end
+  },
 
   {
     "max397574/better-escape.nvim",
@@ -86,8 +92,16 @@ return {
       require('git-conflict').setup()
     end
   },
-  
-  { 'alvan/vim-closetag' },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
   
   {
     'nvim-lualine/lualine.nvim',

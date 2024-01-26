@@ -104,6 +104,7 @@ alias rz='source ~/.zshrc'
 alias kg='k8sgo'
 alias vi='nvim'
 alias v='nvim'
+alias lg='lazygit'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$HOME/.linuxbrew/bin:$PATH"
