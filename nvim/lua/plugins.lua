@@ -78,13 +78,25 @@ return {
   'tpope/vim-repeat',
 
   {
-    'TimUntersberger/neogit',
-    dependencies = { { 'nvim-lua/plenary.nvim' }, { 'sindrets/diffview.nvim' } },
+    'akinsho/toggleterm.nvim',
+    version = "*",
     config = function()
-      require('config.neogit')
+      require("toggleterm").setup {
+        -- size can be a number or function which is passed the current terminal
+        size = 100,
+      }
+
+      local Terminal  = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new({ size = 100, cmd = "lazygit", hidden = true })
+
+      function _lazygit_toggle()
+        lazygit:toggle()
+      end
+
+      vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
     end
   },
-  
+
   {
     'akinsho/git-conflict.nvim',
     version = "*",
