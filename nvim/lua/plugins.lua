@@ -191,7 +191,7 @@ return {
   --},
   
   -- FIXME tmp patch for hop in searching
-  -- { 'easymotion/vim-easymotion' },
+  { 'easymotion/vim-easymotion' },
 
   -- file explorer
   {
