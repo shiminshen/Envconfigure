@@ -13,11 +13,12 @@ vim.o.shiftwidth = 2
 vim.g.mapleader = ' '
 
 -- Map Visual mode blockwise indent
-vim.api.nvim_set_keymap('x', '>', '>gv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<', '<gv', { noremap = true, silent = true })
+vim.keymap.set('x', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('x', '<', '<gv', { noremap = true, silent = true })
 
 -- Map space to :
-vim.api.nvim_set_keymap('n', ';', ':', { noremap = true, silent = true })
+vim.keymap.set('n', ';', ':', { noremap = true, silent = true })
 
 -- Map <Leader>w to write file
-vim.api.nvim_set_keymap('n', '<Leader>w', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>w', ':w<CR>')
+

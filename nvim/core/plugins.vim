@@ -5,8 +5,8 @@ omap / <Plug>(easymotion-tn)
 """""" bufferline
 " These commands will navigate through buffers in order regardless of which mode you are using
 " e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent><C-j> :BufferLineCycleNext<CR>
-nnoremap <silent><C-k> :BufferLineCyclePrev<CR>
+nnoremap <silent><C-k> :BufferLineCycleNext<CR>
+nnoremap <silent><C-j> :BufferLineCyclePrev<CR>
 
 " These commands will move the current buffer backwards or forwards in the bufferline
 nnoremap <silent><C-l> :BufferLineMoveNext<CR>
