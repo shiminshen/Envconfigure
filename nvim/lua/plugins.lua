@@ -311,6 +311,7 @@ return {
   
   -- github copilot
   {'github/copilot.vim'},
+  -- {'zbirenbaum/copilot.lua'},
 
   -- react snippet for coc-snippets
   {'mlaursen/vim-react-snippets'},

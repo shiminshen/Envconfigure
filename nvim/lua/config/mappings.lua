@@ -22,3 +22,10 @@ vim.keymap.set('n', ';', ':', { noremap = true, silent = true })
 -- Map <Leader>w to write file
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
 
+-- BufferLineCycleNext and BufferLineCyclePrev mappings
+vim.keymap.set('n', '<C-k>', ':BufferLineCycleNext<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', ':BufferLineCyclePrev<CR>', { silent = true })
+
+-- BufferLineMoveNext and BufferLineMovePrev mappings
+vim.keymap.set('n', '<C-l>', ':BufferLineMoveNext<CR>', { silent = true })
+vim.keymap.set('n', '<C-h>', ':BufferLineMovePrev<CR>', { silent = true })

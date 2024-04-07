@@ -2,17 +2,6 @@
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-"""""" bufferline
-" These commands will navigate through buffers in order regardless of which mode you are using
-" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-nnoremap <silent><C-k> :BufferLineCycleNext<CR>
-nnoremap <silent><C-j> :BufferLineCyclePrev<CR>
-
-" These commands will move the current buffer backwards or forwards in the bufferline
-nnoremap <silent><C-l> :BufferLineMoveNext<CR>
-nnoremap <silent><C-h> :BufferLineMovePrev<CR>
-
-
 """""" coc
 let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint', 'coc-prettier', '@yaegassy/coc-tailwindcss3']
 " Some servers have issues with backup files, see #649.
