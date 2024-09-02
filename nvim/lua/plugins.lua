@@ -39,7 +39,7 @@ return {
         end,
       })
       -- You probably also want to set a keymap to toggle aerial
-      vim.keymap.set("n", "<leader>aa", "<cmd>AerialToggle!<CR>")
+      vim.keymap.set("n", "<leader>at", "<cmd>AerialToggle!<CR>")
     end
   },
 
@@ -55,18 +55,25 @@ return {
   {
     "max397574/better-escape.nvim",
     config = function()
-      require("better_escape").setup {
-        mapping = {"jk", "jj"}, -- a table with mappings to use
-        timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-        clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-        keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
-        -- example(recommended)
-        -- keys = function()
-          --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
-          -- end,
-        }
+      require("better_escape").setup()
     end,
   },
+
+  -- {
+  --   "max397574/better-escape.nvim",
+  --   config = function()
+  --     require("better_escape").setup {
+  --       mapping = {"jk", "jj"}, -- a table with mappings to use
+  --       timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+  --       clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+  --       keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+  --       -- example(recommended)
+  --       -- keys = function()
+  --         --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
+  --         -- end,
+  --       }
+  --   end,
+  -- },
   
 
   -- replace clip to m from d
@@ -300,7 +307,6 @@ return {
     config = function()
       require('config.treesitter')
     end
-    
   },
 
   {
@@ -318,7 +324,8 @@ return {
   {'honza/vim-snippets'},
   {'isRuslan/vim-es6'},
 
-  {'liuchengxu/vista.vim'},
+  -- FIXME: break after nvim v0.10
+  -- {'liuchengxu/vista.vim'},
 
   -- show upper buffer line
   {
@@ -329,5 +336,49 @@ return {
       require('config.bufferline')
     end
   },
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    opts = {
+      -- add any opts here
+      provider = 'openai',
+    },
+    build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to setup it properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  }
 
 }
