@@ -316,7 +316,11 @@ return {
   },
   
   -- github copilot
-  {'github/copilot.vim'},
+  {'github/copilot.vim',
+    config = function()
+      require('config.copilot')
+    end
+  },
   -- {'zbirenbaum/copilot.lua'},
 
   -- react snippet for coc-snippets

@@ -3,7 +3,7 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 """""" coc
-let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint', 'coc-prettier-dev', '@yaegassy/coc-tailwindcss3']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-pairs', 'coc-json', 'coc-eslint', 'coc-prettier-dev', '@yaegassy/coc-tailwindcss3', '@hexuhua/coc-copilot']
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -155,7 +155,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 """""" coc-snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+" imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
@@ -172,15 +172,10 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
-"""""" coc-highlight
-autocmd CursorHold * silent call CocActionAsync('highlight')
+inoremap <silent><expr><c-l> coc#refresh()
 
 """""" coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-
-"""""" vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js,*.jsx"
-let g:closetag_enable_react_fragment = 1
 
 """""" markdown-preview
 " let g:mkdp_auto_start = 1
