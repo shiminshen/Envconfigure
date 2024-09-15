@@ -203,3 +203,18 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     desc = "Automatically trigger tsserver quickfix and coc-prettier formatting on TypeScript file save"
 })
 
+-- Set keybindings for coc.nvim snippets
+vim.g.coc_snippet_next = '<c-j>'  -- <leader>aa: ask, <leader>ae: edit
+vim.g.coc_snippet_prev = '<c-k>'
+
+-- Use <C-j> for both expand and jump (make expand higher priority)
+vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(coc-snippets-expand-jump)', {silent = true, noremap = true})
+
+-- Use <leader>x for converting visual selected code to snippet
+vim.api.nvim_set_keymap('x', '<leader>x', '<Plug>(coc-convert-snippet)', {silent = true, noremap = true})
+
+-- Refresh completion with <C-l>
+vim.api.nvim_set_keymap('i', '<c-l>', 'coc#refresh()', {silent = true, expr = true, noremap = true})
+
+-- Command to format document with Prettier
+vim.api.nvim_create_user_command('Prettier', 'CocCommand prettier.forceFormatDocument', {})
