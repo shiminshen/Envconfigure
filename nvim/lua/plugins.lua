@@ -313,6 +313,9 @@ return {
     'neoclide/coc.nvim',
     -- FIXME break change at v0.0.82
     branch = 'release',
+    config = function()
+      require('config.coc')
+    end
   },
   
   -- github copilot
