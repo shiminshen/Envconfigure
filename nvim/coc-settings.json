@@ -1,5 +1,4 @@
 {
-  "suggest.noselect": true,
   "eslint.autoFixOnSave": true,
   "typescript.preferences.importModuleSpecifier": "non-relative"
 }

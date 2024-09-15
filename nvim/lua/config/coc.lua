@@ -184,3 +184,22 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+
+
+-- Damon's custom mappings
+-- Create an autocmd group
+vim.api.nvim_create_augroup("AutoQuickFixAndPrettierGroup", {})
+
+-- Trigger quickfix and prettier on TypeScript file save
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = "AutoQuickFixAndPrettierGroup",
+    pattern = "*.ts,*.tsx",  -- Apply to TypeScript and TSX files
+    callback = function()
+        -- Trigger tsserver quickfix
+        vim.fn.CocActionAsync('runCommand', 'tsserver.executeAutofix')
+        -- Trigger prettier formatting
+        vim.fn.CocActionAsync('runCommand', 'prettier.forceFormatDocument')
+    end,
+    desc = "Automatically trigger tsserver quickfix and coc-prettier formatting on TypeScript file save"
+})
+
