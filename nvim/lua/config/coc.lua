@@ -100,8 +100,9 @@ vim.api.nvim_create_autocmd("User", {
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
 local opts = {silent = true, nowait = true}
-keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
-keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+-- WARNING: conflict with avante
+-- keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+-- keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 
 -- Remap keys for apply code actions at the cursor position.
 keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
@@ -204,7 +205,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- Set keybindings for coc.nvim snippets
-vim.g.coc_snippet_next = '<c-j>'  -- <leader>aa: ask, <leader>ae: edit
+vim.g.coc_snippet_next = '<c-j>'
 vim.g.coc_snippet_prev = '<c-k>'
 
 -- Use <C-j> for both expand and jump (make expand higher priority)
