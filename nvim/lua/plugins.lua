@@ -304,17 +304,22 @@ return {
     'neoclide/coc.nvim',
     -- FIXME break change at v0.0.82
     branch = 'release',
+    dependencies = { 'github/copilot.vim' },
     config = function()
       require('config.coc')
     end
   },
-  
+
   -- github copilot
-  {'github/copilot.vim',
-    config = function()
-      require('config.copilot')
-    end
-  },
+  -- {'github/copilot.vim',
+  --   config = function()
+  --     require('config.copilot')
+  --   end
+  -- },
+
+  -- -- broswer integration
+  -- { 'glacambre/firenvim', build = ":call firenvim#install(0)" },
+  
   -- {'zbirenbaum/copilot.lua'},
 
   -- react snippet for coc-snippets

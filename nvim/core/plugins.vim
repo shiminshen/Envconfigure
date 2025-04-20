@@ -2,7 +2,7 @@
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-json', 'coc-eslint', 'coc-prettier-dev', '@yaegassy/coc-tailwindcss3', '@hexuhua/coc-copilot']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-json', 'coc-eslint', 'coc-prettier-dev', '@yaegassy/coc-tailwindcss3', '@hexuhua/coc-copilot', 'coc-pyright']
 
 
 """""" coc-snippets
