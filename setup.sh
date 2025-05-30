@@ -1,25 +1,19 @@
 #!/bin/bash
 
-case `uname` in
-  'Linux' )
-    # install essential tools
-    sudo apt-get install -y vim zsh curl ruby
-    # install dependency of youcompleteme
-    sudo apt-get install -y build-essential cmake python-dev python3-dev
-    # install linuxbrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-    PATH="$HOME/.linuxbrew/bin:$PATH"
-    echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bash_profile
-    ;;
-  'Darwin' )
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/damon/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install zsh
-    ;;
-esac
+# MacOS
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/damon/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew install zsh
 
-brew install tmux git git-extras ag neovim ripgrep fd tig fig fzf jesseduffield/lazygit/lazygit
+# install powerlevel10k
+# ref: https://github.com/romkatv/powerlevel10k#oh-my-zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+brew install tmux git gh git-extras ag neovim ripgrep fd tig fig fzf bat yazi jesseduffield/lazygit/lazygit
+
+# https://github.com/dlvhdr/gh-dash
+gh extension install dlvhdr/gh-dash
 
 # install ctag for vista (tagbar)
 brew tap universal-ctags/universal-ctags
@@ -27,9 +21,8 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 pip3 install pynvim
 
-
 # install nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
@@ -38,7 +31,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install stable
 
 # install develope tools
-npm install -g instant-markdown-d diff-so-fancy nodemon npm-check-updates standard
+npm install -g instant-markdown-d diff-so-fancy npm-check-updates opencommit
 
 # install tpm for tmux
 git clone https://github.com/gpakosz/.tmux.git
@@ -58,11 +51,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 source ~/.zshrc
 # install fzf-git
 git clone https://github.com/hschne/fzf-git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-git
-
-
-if [[ `uname`='Linux' ]]; then
-  echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.zshrc
-fi
 
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
 echo '[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.zshrc
