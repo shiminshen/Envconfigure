@@ -252,13 +252,34 @@ return {
     config = require('config.treesitter').config,
   },
 
-  -- Intellisense engine (LSP, completion, etc.)
+  -- Mason: LSP/DAP/Formatter/Linter manager and LSP integration
   {
-    'neoclide/coc.nvim',
-    -- FIXME break change at v0.0.82
-    branch = 'release',
-    dependencies = { 'github/copilot.vim' },
-    config = require('config.coc').config,
+    "mason-org/mason.nvim",
+    opts = require('config.mason').mason,
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = require('config.mason').mason_lspconfig,
+    dependencies = {
+      { "mason-org/mason.nvim", opts = require('config.mason').mason },
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    dependencies = {
+      { "ms-jpq/coq_nvim", branch = "coq", build = ":COQdeps" },
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      -- { "ms-jpq/coq.thirdparty", branch = "3p" },
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+    },
+    init = function()
+      vim.g.coq_settings = {
+        auto_start = true,
+      }
+    end,
   },
 
   -- React snippets for coc-snippets
