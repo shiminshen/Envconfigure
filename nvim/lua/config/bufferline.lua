@@ -1,2 +1,7 @@
 vim.opt.termguicolors = true
-require("bufferline").setup{}
+
+return {
+  config = function()
+    require('bufferline').setup{}
+  end
+}

@@ -219,3 +219,9 @@ vim.api.nvim_set_keymap('i', '<c-l>', 'coc#refresh()', {silent = true, expr = tr
 
 -- Command to format document with Prettier
 vim.api.nvim_create_user_command('Prettier', 'CocCommand prettier.forceFormatDocument', {})
+
+return {
+  config = function()
+    require('config.coc')
+  end
+}
