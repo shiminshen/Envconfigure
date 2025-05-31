@@ -17,3 +17,6 @@ vim.loader.enable() -- https://github.com/lewis6991/impatient.nvim
     
 require("config.mappings")
 require("lazy").setup('plugins')
+
+-- synchronously copy 
+vim.opt.clipboard:append("unnamedplus")

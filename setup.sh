@@ -10,7 +10,7 @@ brew install zsh
 # ref: https://github.com/romkatv/powerlevel10k#oh-my-zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
-brew install tmux git gh git-extras ag neovim ripgrep fd tig fig fzf bat yazi jesseduffield/lazygit/lazygit
+brew install tmux git gh git-extras ag neovim ripgrep fd tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad
 
 # https://github.com/dlvhdr/gh-dash
 gh extension install dlvhdr/gh-dash

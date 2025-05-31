@@ -9,12 +9,12 @@ return {
   },
 
   -- Startup dashboard
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = require('config.dashboard').config,
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  },
+  -- {
+  --   'nvimdev/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = require('config.dashboard').config,
+  --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  -- },
 
   -- Code outline/symbols sidebar
   {
@@ -167,14 +167,14 @@ return {
     end
   },
 
-  -- Indentation guides
-  {
-    'echasnovski/mini.indentscope',
-    version = '*',
-    config = function()
-      require('mini.indentscope').setup()
-    end
-  },
+  -- -- Indentation guides
+  -- {
+  --   'echasnovski/mini.indentscope',
+  --   version = '*',
+  --   config = function()
+  --     require('mini.indentscope').setup()
+  --   end
+  -- },
 
   -- -- Quick buffer navigation
   -- FIXME: only telescope support, no snacks version yet
@@ -271,14 +271,21 @@ return {
     dependencies = {
       { "ms-jpq/coq_nvim", branch = "coq", build = ":COQdeps" },
       { "ms-jpq/coq.artifacts", branch = "artifacts" },
-      -- { "ms-jpq/coq.thirdparty", branch = "3p" },
+      { "ms-jpq/coq.thirdparty", branch = "3p" },
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
     },
     init = function()
       vim.g.coq_settings = {
-        auto_start = true,
+        auto_start = true, -- if you want to start COQ at startup
+        -- Your COQ settings here
+        keymap = {
+          pre_select = true,
+        },
       }
+    end,
+    config = function()
+      -- Your LSP settings here
     end,
   },
 
@@ -385,6 +392,19 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
-  }
+  },
+
+  -- LuaSnip: Snippet engine
+  {
+    'L3MON4D3/LuaSnip',
+    version = "*",
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    config = require('config.luasnip').config,
+  },
+  -- friendly-snippets: Community snippet collection
+  {
+    'rafamadriz/friendly-snippets',
+    lazy = true,
+  },
 
 }
