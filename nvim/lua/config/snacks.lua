@@ -4,15 +4,8 @@ M.opts = {
   bigfile = { enabled = true },
   dashboard = {
     sections = {
-      { section = "keys", gap = 1, padding = 2 },
       { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
-      {
-        section = "terminal",
-        cmd = "pokemon-colorscripts -r; sleep .1",
-        random = 100,
-        height = 15,
-        indent = 15,
-      },
+      { section = "keys", gap = 1, padding = 2 },
       -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
       function()
         local in_git = Snacks.git.get_root() ~= nil
@@ -36,7 +29,7 @@ M.opts = {
               vim.fn.jobstart("gh issue list --web", { detach = true })
             end,
             icon = " ",
-            height = 7,
+            height = 3,
           },
           {
             icon = " ",
@@ -46,13 +39,13 @@ M.opts = {
             action = function()
               vim.fn.jobstart("gh pr list --web", { detach = true })
             end,
-            height = 7,
+            height = 5,
           },
           {
             icon = " ",
             title = "Git Status",
             cmd = "git --no-pager diff --stat -B -M -C",
-            height = 10,
+            height = 5,
           },
         }
         return vim.tbl_map(function(cmd)
@@ -66,7 +59,14 @@ M.opts = {
           }, cmd)
         end, cmds)
       end,
-
+      {
+        pane = 2,
+        section = "terminal",
+        cmd = "pokemon-colorscripts -r; sleep .1",
+        random = 100,
+        height = 20,
+        indent = 15,
+      }
     }
   },
   explorer = { enabled = true },

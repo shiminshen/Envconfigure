@@ -269,11 +269,12 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
-      { "ms-jpq/coq_nvim", branch = "coq", build = ":COQdeps" },
-      { "ms-jpq/coq.artifacts", branch = "artifacts" },
-      { "ms-jpq/coq.thirdparty", branch = "3p" },
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
+      { "ms-jpq/coq_nvim", branch = "coq", build = ":COQdeps" },
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+
+      { "ms-jpq/coq.thirdparty", branch = "3p" },
     },
     init = function()
       vim.g.coq_settings = {
@@ -285,16 +286,23 @@ return {
       }
     end,
     config = function()
-      -- Your LSP settings here
+      require("mason").setup()
+      local lsp_servers = require("config.lsp_servers")
+      local lspconfig = require("lspconfig")
+      local coq = require("coq")
+
+      for _, server in ipairs(lsp_servers) do
+        lspconfig[server].setup(coq.lsp_ensure_capabilities({}))
+      end
     end,
   },
 
-  -- React snippets for coc-snippets
-  {'mlaursen/vim-react-snippets'},
-  -- Snippet collection
-  {'honza/vim-snippets'},
-  -- ES6 snippets
-  {'isRuslan/vim-es6'},
+  -- -- React snippets for coc-snippets
+  -- {'mlaursen/vim-react-snippets'},
+  -- -- Snippet collection
+  -- {'honza/vim-snippets'},
+  -- -- ES6 snippets
+  -- {'isRuslan/vim-es6'},
 
   -- Show upper buffer line
   {
