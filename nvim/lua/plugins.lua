@@ -8,14 +8,6 @@ return {
     config = require('config.tokyonight').config,
   },
 
-  -- Startup dashboard
-  -- {
-  --   'nvimdev/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   config = require('config.dashboard').config,
-  --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  -- },
-
   -- Code outline/symbols sidebar
   {
     'stevearc/aerial.nvim',
@@ -66,13 +58,6 @@ return {
   -- Repeat plugin: enables . to repeat more actions
   'tpope/vim-repeat',
 
-  -- Integrated terminal management
-  {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    config = require('config.toggleterm').config,
-  },
-
   -- Git conflict resolution UI
   {
     'akinsho/git-conflict.nvim',
@@ -97,7 +82,7 @@ return {
       require('lualine').setup()
     end
   },
-  
+
   -- Markdown preview in browser
   {
     "iamcco/markdown-preview.nvim",
@@ -105,7 +90,7 @@ return {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-  
+
   -- Generate git links for code
   {
     'ruifm/gitlinker.nvim',
@@ -140,25 +125,18 @@ return {
       end)
     end,
   },
-  
+
   -- EasyMotion: quick cursor movement
   { 'easymotion/vim-easymotion' },
 
-  -- File explorer
-  {
-    'kyazdani42/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = require('config.nvim-tree').config,
-  },
-
-  -- Git integration (signs, hunk actions)
+  -- Git integration (signs, hunk actions) (已被 snacks.nvim 取代)
   {
     'lewis6991/gitsigns.nvim',
     version = 'v0.5', -- To the latest release
     config = require('config.gitsigns').config,
   },
 
-  -- Highlight word under cursor
+  -- -- Highlight word under cursor
   {
     'echasnovski/mini.cursorword',
     version = '*',
@@ -167,17 +145,8 @@ return {
     end
   },
 
-  -- -- Indentation guides
-  -- {
-  --   'echasnovski/mini.indentscope',
-  --   version = '*',
-  --   config = function()
-  --     require('mini.indentscope').setup()
-  --   end
-  -- },
-
-  -- -- Quick buffer navigation
-  -- FIXME: only telescope support, no snacks version yet
+  -- snacks not support (need telescope)
+  -- Quick buffer navigation
   -- {
   --   "ThePrimeagen/harpoon",
   --   event = "VimEnter",
@@ -218,23 +187,24 @@ return {
     end,
   },
 
-  -- Enhanced notifications, command line, and LSP UI
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-    config = require('config.noice').config,
-  },
+  -- Enhanced notifications, command line, and LSP UI (replace by snacks.nvim)
+  -- NOTE: noice.nvim is conflic with easymotion search
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module=\"...\"` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   },
+  --   config = require('config.noice').config,
+  -- },
 
   -- Show key bindings hint
   {
@@ -310,51 +280,6 @@ return {
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = require('config.bufferline').config,
-  },
-
-  -- Yazi file manager integration
-  {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      -- check the installation instructions at
-      -- https://github.com/folke/snacks.nvim
-      "folke/snacks.nvim"
-    },
-    keys = {
-      -- 👇 in this section, choose your own keymappings!
-      {
-        "<leader>-",
-        mode = { "n", "v" },
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>cw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        "<c-up>",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
-      },
-    },
-    ---@type YaziConfig | {}
-    opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
-      keymaps = {
-        show_help = "<f1>",
-      },
-    },
-    -- 👇 if you use `open_for_directories=true`, this is recommended
-    init = function()
-      -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-      -- vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-    end,
   },
 
   -- AI assistant integration

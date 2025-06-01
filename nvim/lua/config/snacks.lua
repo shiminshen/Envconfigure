@@ -2,10 +2,46 @@ local M = {}
 
 M.opts = {
   bigfile = { enabled = true },
+  explorer = { enabled = true },
+  indent = { enabled = true },
+  input = { enabled = true },
+  notifier = {
+    enabled = true,
+    timeout = 3000,
+  },
+  picker = { enabled = true },
+  quickfile = { enabled = true },
+  scope = { enabled = true },
+  statuscolumn = { enabled = true },
+  words = { enabled = true },
+  -- toggle = {
+  --   map = vim.keymap.set, -- keymap.set function to use
+  --   which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
+  --   notify = true, -- show a notification when toggling
+  --   -- icons for enabled/disabled states
+  --   icon = {
+  --     enabled = " ",
+  --     disabled = " ",
+  --   },
+  --   -- colors for enabled/disabled states
+  --   color = {
+  --     enabled = "green",
+  --     disabled = "yellow",
+  --   },
+  --   wk_desc = {
+  --     enabled = "Disable ",
+  --     disabled = "Enable ",
+  --   },
+  -- },
+  styles = {
+    notification = {
+      -- wo = { wrap = true } -- Wrap notifications
+    }
+  },
   dashboard = {
     sections = {
       { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
-      { section = "keys", gap = 1, padding = 2 },
+      { section = "keys", gap = 0, padding = 2 },
       -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
       function()
         local in_git = Snacks.git.get_root() ~= nil
@@ -69,23 +105,6 @@ M.opts = {
       }
     }
   },
-  explorer = { enabled = true },
-  indent = { enabled = true },
-  input = { enabled = true },
-  notifier = {
-    enabled = true,
-    timeout = 3000,
-  },
-  picker = { enabled = true },
-  quickfile = { enabled = true },
-  scope = { enabled = true },
-  statuscolumn = { enabled = true },
-  words = { enabled = true },
-  styles = {
-    notification = {
-      -- wo = { wrap = true } -- Wrap notifications
-    }
-  }
 }
 
 M.keys = {
@@ -146,7 +165,7 @@ M.keys = {
   { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
   { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
   { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-  { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+  -- { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
   { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
   { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
   -- Other

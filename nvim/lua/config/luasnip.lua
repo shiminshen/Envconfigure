@@ -20,7 +20,7 @@ M.config = function()
   --     luasnip.change_choice(1)
   --   end
   -- end, {silent = true, desc = "LuaSnip next choice"})
-  
+
 end
 
-return M 
+return M
