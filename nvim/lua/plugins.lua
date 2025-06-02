@@ -209,7 +209,9 @@ return {
   -- Show key bindings hint
   {
     'folke/which-key.nvim',
-    config = require('config.which-key').config,
+    config = function()
+      require('config.which-key')
+    end,
   },
 
   -- Better syntax highlighting

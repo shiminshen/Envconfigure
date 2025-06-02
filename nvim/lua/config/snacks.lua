@@ -40,8 +40,8 @@ M.opts = {
   },
   dashboard = {
     sections = {
-      { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
       { section = "keys", gap = 0, padding = 2 },
+      { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
       -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
       function()
         local in_git = Snacks.git.get_root() ~= nil
