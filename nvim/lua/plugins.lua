@@ -1,9 +1,9 @@
 return {
-  
+
   -- Colorscheme: Tokyo Night
   {
     'folke/tokyonight.nvim',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = require('config.tokyonight').config,
   },
@@ -23,12 +23,12 @@ return {
   -- Auto pairs for brackets, quotes, etc.
   {
     'echasnovski/mini.pairs',
-    version = false,
+    version = '*',
     config = function()
       require('mini.pairs').setup()
     end
   },
-  
+
   -- Comment plugin (toggle comments)
   {
     'echasnovski/mini.comment',
@@ -51,10 +51,10 @@ return {
       cut_key = "m",
     }
   },
-  
+
   -- Multiple cursors support
   { 'mg979/vim-visual-multi' },
-  
+
   -- Repeat plugin: enables . to repeat more actions
   'tpope/vim-repeat',
 
@@ -73,7 +73,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
-  
+
   -- Statusline
   {
     'nvim-lualine/lualine.nvim',
@@ -95,7 +95,7 @@ return {
   {
     'ruifm/gitlinker.nvim',
     config = function()
-      require"gitlinker".setup()
+      require "gitlinker".setup()
     end
   },
 
@@ -120,7 +120,7 @@ return {
     "ggandor/leap.nvim",
     config = function(_, opts)
       local leap = require("leap")
-      vim.keymap.set({'n', 'x', 'o'}, 'f', function ()
+      vim.keymap.set({ 'n', 'x', 'o' }, 'f', function()
         require('leap').leap { target_windows = { vim.api.nvim_get_current_win() } }
       end)
     end,
@@ -132,7 +132,6 @@ return {
   -- Git integration (signs, hunk actions) (已被 snacks.nvim 取代)
   {
     'lewis6991/gitsigns.nvim',
-    version = 'v0.5', -- To the latest release
     config = require('config.gitsigns').config,
   },
 
@@ -176,7 +175,8 @@ return {
           Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
           Snacks.toggle.diagnostics():map("<leader>ud")
           Snacks.toggle.line_number():map("<leader>ul")
-          Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
+          Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
+            "<leader>uc")
           Snacks.toggle.treesitter():map("<leader>uT")
           Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
           Snacks.toggle.inlay_hints():map("<leader>uh")
@@ -243,8 +243,8 @@ return {
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
-      { "ms-jpq/coq_nvim", branch = "coq", build = ":COQdeps" },
-      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      { "ms-jpq/coq_nvim",       branch = "coq",      build = ":COQdeps" },
+      { "ms-jpq/coq.artifacts",  branch = "artifacts" },
 
       { "ms-jpq/coq.thirdparty", branch = "3p" },
     },
@@ -252,9 +252,9 @@ return {
       vim.g.coq_settings = {
         auto_start = true, -- if you want to start COQ at startup
         -- Your COQ settings here
-        keymap = {
-          pre_select = true,
-        },
+        -- keymap = {
+        --   pre_select = true,
+        -- },
       }
     end,
     config = function()
@@ -300,7 +300,7 @@ return {
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -340,6 +340,13 @@ return {
   {
     'rafamadriz/friendly-snippets',
     lazy = true,
+  },
+
+  -- Formatter: conform.nvim
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+    config = require('config.conform').config,
   },
 
 }
