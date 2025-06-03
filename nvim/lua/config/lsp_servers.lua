@@ -1,5 +1,5 @@
 return {
-  "ts_ls",
+  "vtsls",
   "html",
   "cssls",
   "jsonls",
