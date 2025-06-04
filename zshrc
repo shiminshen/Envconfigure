@@ -118,6 +118,7 @@ alias rg='rg -i'
 alias ghd='gh dash'
 alias c='bat'
 alias f='fd'
+alias vel='nvim .env.local'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
