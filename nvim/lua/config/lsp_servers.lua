@@ -5,6 +5,7 @@ return {
   "jsonls",
   "yamlls",
   "eslint",
+  "biome",
   "tailwindcss",
   "emmet_language_server",
   "marksman",

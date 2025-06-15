@@ -203,6 +203,9 @@ return {
       require('lspsaga').setup({
         lightbulb = {
           enable = false,
+        },
+        rename = {
+          in_select = false,
         }
       })
     end,
