@@ -265,10 +265,11 @@ return {
       "neovim/nvim-lspconfig",
     },
   },
+
   -- Blink completion
   {
     'saghen/blink.cmp',
-    dependencies = { 
+    dependencies = {
       'rafamadriz/friendly-snippets',
       {
         'fang2hou/blink-copilot',
@@ -279,16 +280,24 @@ return {
     opts = {
       keymap = { preset = 'super-tab' },
       appearance = { nerd_font_variant = 'mono' },
-      completion = { 
-        documentation = { auto_show = true }
+      completion = {
+        documentation = { auto_show = true },
+        ghost_text = {
+          enabled = vim.g.ai_cmp,
+        },
+        menu = {
+          draw = {
+            treesitter = { "lsp" },
+          },
+        },
       },
-      sources = { 
-        default = { 'lsp', 'copilot', 'snippets', 'path', 'buffer' },
+      sources = {
+        default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
         providers = {
           copilot = {
             name = "copilot",
             module = "blink-copilot",
-            score_offset = 100,
+            -- score_offset = 100,
             async = true,
           }
         }
@@ -348,50 +357,6 @@ return {
     end,
   },
 
-  -- AI assistant integration
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    opts = {
-      -- add any opts here
-      provider = 'openai',
-    },
-    build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to setup it properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-  },
 
   -- LuaSnip: Snippet engine (disabled - using blink.cmp snippets)
   -- {
