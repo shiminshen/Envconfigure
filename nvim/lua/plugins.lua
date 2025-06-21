@@ -268,7 +268,13 @@ return {
   -- Blink completion
   {
     'saghen/blink.cmp',
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = { 
+      'rafamadriz/friendly-snippets',
+      {
+        'fang2hou/blink-copilot',
+        dependencies = { 'zbirenbaum/copilot.lua' }
+      }
+    },
     version = '1.*',
     opts = {
       keymap = { preset = 'super-tab' },
@@ -277,7 +283,15 @@ return {
         documentation = { auto_show = true }
       },
       sources = { 
-        default = { 'lsp', 'snippets', 'path', 'buffer' }
+        default = { 'lsp', 'copilot', 'snippets', 'path', 'buffer' },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          }
+        }
       },
       signature = { enabled = true },
       fuzzy = { implementation = "prefer_rust_with_warning" }
@@ -319,6 +333,19 @@ return {
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = require('config.bufferline').config,
+  },
+
+  -- Copilot
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
   },
 
   -- AI assistant integration
