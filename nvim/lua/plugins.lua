@@ -265,67 +265,43 @@ return {
       "neovim/nvim-lspconfig",
     },
   },
+  -- Blink completion
+  {
+    'saghen/blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    version = '1.*',
+    opts = {
+      keymap = { preset = 'super-tab' },
+      appearance = { nerd_font_variant = 'mono' },
+      completion = { 
+        documentation = { auto_show = true }
+      },
+      sources = { 
+        default = { 'lsp', 'snippets', 'path', 'buffer' }
+      },
+      signature = { enabled = true },
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" }
+  },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
-      { "ms-jpq/coq_nvim",       branch = "coq",      build = ":COQdeps" },
-      { "ms-jpq/coq.artifacts",  branch = "artifacts" },
-
-      { "ms-jpq/coq.thirdparty", branch = "3p" },
+      'saghen/blink.cmp',
     },
-    init = function()
-      -- 🐓 Coq completion settings
-
-      -- Disable recommended keymaps so we can define custom ones
-      vim.g.coq_settings = {
-        auto_start = true, -- if you want to start COQ at startup
-        keymap = {
-          recommended = false,
-          pre_select = true,
-        },
-        display = {
-          ghost_text = {
-            enabled = false,
-          },
-        },
-        clients = {
-          snippets = {
-            weight_adjust = 5.0
-          }
-        }
-      }
-
-      -- Keybindings
-      vim.api.nvim_set_keymap('i', '<Esc>', [[pumvisible() ? "\<C-e><Esc>" : "\<Esc>"]], { expr = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<C-c>', [[pumvisible() ? "\<C-e><C-c>" : "\<C-c>"]], { expr = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<BS>', [[pumvisible() ? "\<C-e><BS>"  : "\<BS>"]], { expr = true, silent = true })
-
-      -- Keep default <CR> (Enter) behavior for newlines
-      vim.api.nvim_set_keymap('i', '<CR>', [[pumvisible() ? "\<C-e><CR>" : "\<CR>"]], { expr = true, silent = true })
-
-      -- Use <C-j> to confirm completion
-      vim.api.nvim_set_keymap(
-        'i',
-        '<C-j>',
-        [[pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]],
-        { expr = true, silent = true }
-      )
-
-      -- Use <Tab> / <S-Tab> to navigate completion menu
-      vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<BS>"]], { expr = true, silent = true })
-    end,
     config = function()
       require("mason").setup()
       local lsp_servers = require("config.lsp_servers")
       local lspconfig = require("lspconfig")
-      local coq = require("coq")
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       for _, server in ipairs(lsp_servers) do
-        lspconfig[server].setup(coq.lsp_ensure_capabilities({}))
+        lspconfig[server].setup({
+          capabilities = capabilities
+        })
       end
     end,
   },
@@ -390,18 +366,18 @@ return {
     },
   },
 
-  -- LuaSnip: Snippet engine
-  {
-    'L3MON4D3/LuaSnip',
-    version = "*",
-    dependencies = { 'rafamadriz/friendly-snippets' },
-    config = require('config.luasnip').config,
-  },
-  -- friendly-snippets: Community snippet collection
-  {
-    'rafamadriz/friendly-snippets',
-    lazy = true,
-  },
+  -- LuaSnip: Snippet engine (disabled - using blink.cmp snippets)
+  -- {
+  --   'L3MON4D3/LuaSnip',
+  --   version = "*",
+  --   dependencies = { 'rafamadriz/friendly-snippets' },
+  --   config = require('config.luasnip').config,
+  -- },
+  -- friendly-snippets: Community snippet collection (used by blink.cmp)
+  -- {
+  --   'rafamadriz/friendly-snippets',
+  --   lazy = true,
+  -- },
 
   -- Formatter: conform.nvim
   {
