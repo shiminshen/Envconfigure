@@ -271,6 +271,7 @@ return {
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
+      -- { 'L3MON4D3/LuaSnip', version = 'v2.*' },
       {
         'fang2hou/blink-copilot',
         dependencies = { 'zbirenbaum/copilot.lua' }
@@ -286,6 +287,7 @@ return {
           enabled = vim.g.ai_cmp,
         },
         menu = {
+          delay = 0,
           draw = {
             treesitter = { "lsp" },
           },
@@ -294,6 +296,14 @@ return {
       sources = {
         default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
         providers = {
+          snippets = {
+            opts = {
+              extended_filetypes = {
+                typescript = { 'javascript' },
+                typescriptreact = { 'javascript' },
+              }
+            }
+          },
           copilot = {
             name = "copilot",
             module = "blink-copilot",
@@ -305,7 +315,6 @@ return {
       signature = { enabled = true },
       fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    opts_extend = { "sources.default" }
   },
   {
     "neovim/nvim-lspconfig",
@@ -365,11 +374,12 @@ return {
   --   dependencies = { 'rafamadriz/friendly-snippets' },
   --   config = require('config.luasnip').config,
   -- },
-  -- friendly-snippets: Community snippet collection (used by blink.cmp)
+  -- -- friendly-snippets: Community snippet collection (used by blink.cmp)
   -- {
   --   'rafamadriz/friendly-snippets',
   --   lazy = true,
   -- },
+
 
   -- Formatter: conform.nvim
   {
