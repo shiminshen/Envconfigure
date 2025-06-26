@@ -26,7 +26,7 @@ fi
 
 # Install system packages
 echo "Installing system packages via Homebrew..."
-brew install zsh tmux git gh git-extras ag neovim ripgrep fd tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
+brew install zsh tmux git gh git-extras ag neovim ripgrep fd jq tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
 
 # Install universal-ctags
 brew tap universal-ctags/universal-ctags
