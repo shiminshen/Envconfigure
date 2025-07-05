@@ -281,7 +281,14 @@ return {
     opts = {
       keymap = {
         preset = 'super-tab',
-        ['<C-j>'] = { 'show' }, -- Manual trigger
+        -- Use C-j/C-k for navigation (replaces default C-p/C-n)
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        -- Use C-l for manual trigger (C-space conflicts with macOS input switching)
+        ['<C-l>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        -- Documentation scroll
+        ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
       },
       appearance = { nerd_font_variant = 'mono' },
       completion = {
@@ -289,15 +296,25 @@ return {
         ghost_text = {
           enabled = vim.g.ai_cmp,
         },
+        -- Performance boost (default: prefetch_on_insert = false)
+        trigger = {
+          prefetch_on_insert = true,
+          show_on_keyword = true,
+          show_on_trigger_character = true,
+        },
         menu = {
           delay = 0,
           draw = {
             treesitter = { "lsp" },
+            -- Better column layout (default: basic columns)
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
           },
         },
       },
       sources = {
         default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
+        -- Start completion from first character (default: min_keyword_length = 1)
+        min_keyword_length = 0,
         providers = {
           snippets = {
             opts = {
