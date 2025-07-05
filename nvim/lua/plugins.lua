@@ -279,7 +279,10 @@ return {
     },
     version = '1.*',
     opts = {
-      keymap = { preset = 'super-tab' },
+      keymap = {
+        preset = 'super-tab',
+        ['<C-j>'] = { 'show' }, -- Manual trigger
+      },
       appearance = { nerd_font_variant = 'mono' },
       completion = {
         documentation = { auto_show = true },

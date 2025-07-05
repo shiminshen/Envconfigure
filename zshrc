@@ -114,12 +114,13 @@ alias tmux='tmux -2'
 alias zshrc='nvim ~/.zshrc'
 alias rz='source ~/.zshrc'
 alias e='exit'
-alias rg='rg -i'
+alias g='rg -i'
 alias ghd='gh dash'
 alias c='bat'
 alias f='fd'
 alias vel='nvim .env.local'
 
+export GOOGLE_CLOUD_PROJECT="1017746689411"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -231,3 +232,6 @@ Please generate a concise, one-line commit message with conventional commit of l
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Created by `pipx` on 2025-06-23 01:35:45
+export PATH="$PATH:/Users/damon/.local/bin"
