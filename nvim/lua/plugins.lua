@@ -286,6 +286,8 @@ return {
         ['<C-j>'] = { 'select_next', 'fallback' },
         -- Use C-l for manual trigger (C-space conflicts with macOS input switching)
         ['<C-l>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        -- Use C-h to close popup (replaces default C-e)
+        ['<C-h>'] = { 'hide', 'fallback' },
         -- Documentation scroll
         ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
