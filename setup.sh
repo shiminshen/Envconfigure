@@ -28,6 +28,13 @@ fi
 echo "Installing system packages via Homebrew..."
 brew install zsh tmux git gh git-extras ag neovim ripgrep fd jq tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
 
+# Install packages for Neovim Snacks plugin functionality
+echo "Installing packages for Neovim Snacks plugin..."
+# imagemagick: Required for image conversion and display in Snacks.image
+# ghostscript: Required for PDF rendering in Snacks.image
+brew install imagemagick ghostscript
+
+
 # Install universal-ctags
 brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -59,6 +66,11 @@ nvm use stable
 # Install Node.js global packages
 echo "Installing Node.js development tools..."
 npm install -g instant-markdown-d diff-so-fancy npm-check-updates opencommit @biomejs/biome
+
+# Install Mermaid CLI for diagram rendering in Neovim Snacks plugin
+echo "Installing Mermaid CLI for diagram rendering..."
+# @mermaid-js/mermaid-cli: Required for rendering Mermaid diagrams in Snacks.image
+npm install -g @mermaid-js/mermaid-cli
 
 # Clone tmux configuration
 if [ ! -d ".tmux" ]; then
