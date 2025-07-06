@@ -170,45 +170,12 @@ return {
     lazy = false,
     opts = require('config.snacks').opts,
     keys = require('config.snacks').keys,
-    init = function()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "VeryLazy",
-        callback = function()
-          _G.dd = function(...)
-            Snacks.debug.inspect(...)
-          end
-          _G.bt = function()
-            Snacks.debug.backtrace()
-          end
-          vim.print = _G.dd
-          Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-          Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-          Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-          Snacks.toggle.diagnostics():map("<leader>ud")
-          Snacks.toggle.line_number():map("<leader>ul")
-          Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
-            "<leader>uc")
-          Snacks.toggle.treesitter():map("<leader>uT")
-          Snacks.toggle.option("backgrounk<leader>uh")
-          Snacks.toggle.indent():map("<leader>ug")
-          Snacks.toggle.dim():map("<leader>uD")
-        end,
-      })
-    end,
+    init = require('config.snacks').init,
   },
 
   {
     'nvimdev/lspsaga.nvim',
-    config = function()
-      require('lspsaga').setup({
-        lightbulb = {
-          enable = false,
-        },
-        rename = {
-          in_select = false,
-        }
-      })
-    end,
+    config = require('config.lspsaga').config,
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
       'nvim-tree/nvim-web-devicons',     -- optional
@@ -288,58 +255,7 @@ return {
       "mason-org/mason-lspconfig.nvim",
       'saghen/blink.cmp',
     },
-    config = function()
-      require("mason").setup()
-      local lsp_servers = require("config.lsp_servers")
-      local lspconfig = require("lspconfig")
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      for _, server in ipairs(lsp_servers) do
-        local server_config = {
-          capabilities = capabilities
-        }
-
-        -- Special configuration for vtsls to support tsconfig path aliases
-        if server == "vtsls" then
-          server_config.settings = {
-            vtsls = {
-              enableMoveToFileCodeAction = true,
-              autoUseWorkspaceTsdk = true,
-            },
-            typescript = {
-              updateImportsOnFileMove = { enabled = "always" },
-              preferences = {
-                importModuleSpecifier = "non-relative",
-                importModuleSpecifierEnding = "minimal",
-                useAliasesForRenames = true,
-                includePackageJsonAutoImports = "auto",
-              },
-              suggest = {
-                completeFunctionCalls = true,
-                includeCompletionsForModuleExports = true,
-                autoImports = true,
-              },
-            },
-            javascript = {
-              updateImportsOnFileMove = { enabled = "always" },
-              preferences = {
-                importModuleSpecifier = "non-relative",
-                importModuleSpecifierEnding = "minimal",
-                useAliasesForRenames = true,
-                includePackageJsonAutoImports = "auto",
-              },
-              suggest = {
-                completeFunctionCalls = true,
-                includeCompletionsForModuleExports = true,
-                autoImports = true,
-              },
-            },
-          }
-        end
-
-        lspconfig[server].setup(server_config)
-      end
-    end,
+    config = require('config.lspconfig').config,
   },
 
   -- -- React snippets
