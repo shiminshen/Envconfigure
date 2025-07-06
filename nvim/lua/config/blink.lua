@@ -56,6 +56,12 @@ M.opts = {
       }
     }
   },
+  snippets = {
+    -- Use LuaSnip instead of native vim.snippet to fix nested snippet navigation issues
+    -- Issue: https://github.com/Saghen/blink.cmp/issues/906
+    -- Native vim.snippet in Neovim 0.11+ causes tab navigation problems with nested snippets
+    preset = 'luasnip',
+  },
   signature = { enabled = true },
   fuzzy = { implementation = "prefer_rust_with_warning" }
 }

@@ -271,7 +271,7 @@ return {
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
-      -- { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+      { 'L3MON4D3/LuaSnip', version = 'v2.*' },
       {
         'fang2hou/blink-copilot',
         dependencies = { 'zbirenbaum/copilot.lua' }
@@ -371,13 +371,13 @@ return {
   },
 
 
-  -- LuaSnip: Snippet engine (disabled - using blink.cmp snippets)
-  -- {
-  --   'L3MON4D3/LuaSnip',
-  --   version = "*",
-  --   dependencies = { 'rafamadriz/friendly-snippets' },
-  --   config = require('config.luasnip').config,
-  -- },
+  -- LuaSnip: Snippet engine (enabled for nested snippet navigation)
+  {
+    'L3MON4D3/LuaSnip',
+    version = "*",
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    config = require('config.luasnip').config,
+  },
   -- -- friendly-snippets: Community snippet collection (used by blink.cmp)
   -- {
   --   'rafamadriz/friendly-snippets',
