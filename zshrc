@@ -116,9 +116,36 @@ alias rz='source ~/.zshrc'
 alias e='exit'
 alias g='rg -i'
 alias ghd='gh dash'
-alias c='bat'
-alias f='fd'
+alias c='bat'  # kept as is since it's shorter
+alias f='fd'   # kept as is since it's shorter
 alias vel='nvim .env.local'
+# eza (modern ls replacement) aliases
+alias ls='eza --color=always --group-directories-first'
+alias ll='eza -alF --color=always --group-directories-first'
+alias la='eza -a --color=always --group-directories-first'
+alias l='eza -F --color=always --group-directories-first'
+alias lt='eza -aT --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
+
+# Modern CLI tool aliases
+alias cat='bat'
+alias grep='rg'
+alias find='fd'
+alias du='dust'
+alias df='duf'
+alias ps='procs'
+alias top='btm'
+alias htop='btm'
+alias diff='delta'
+
+# Additional useful aliases for modern tools
+alias tree='eza --tree'
+alias preview='bat --paging=never'
+alias search='rg -i'
+
+# Initialize zoxide (better cd)
+eval "$(zoxide init zsh)"
+alias cd='z'
 
 export GOOGLE_CLOUD_PROJECT="1017746689411"
 export NVM_DIR="$HOME/.nvm"
@@ -129,6 +156,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Fig post block. Keep at the bottom of this file.
 # export PATH="/Users/damon/.cargo/bin:/opt/homebrew/opt/curl/bin:$PATH"
+export FORGIT_INSTALL_DIR="$HOMEBREW_PREFIX/share/forgit"
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
 
 export LANG=en_US@UTF-8

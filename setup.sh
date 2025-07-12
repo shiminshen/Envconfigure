@@ -28,6 +28,17 @@ fi
 echo "Installing system packages via Homebrew..."
 brew install zsh tmux git gh git-extras ag neovim ripgrep fd jq tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
 
+# Install modern CLI tools (replacements for traditional commands)
+echo "Installing modern CLI tools..."
+# eza: modern replacement for ls with colors and icons
+# git-delta: better git diff viewer with syntax highlighting
+# zoxide: smart cd command that learns your habits
+# dust: modern du with better visualization
+# duf: modern df with prettier output
+# procs: modern ps with better formatting
+# bottom: modern top/htop with better UI
+brew install eza git-delta zoxide dust duf procs bottom
+
 # Install packages for Neovim Snacks plugin functionality
 echo "Installing packages for Neovim Snacks plugin..."
 # imagemagick: Required for image conversion and display in Snacks.image
@@ -41,6 +52,13 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # Install GitHub CLI extensions
 gh extension install dlvhdr/gh-dash
+
+# Configure git-delta
+echo "Configuring git-delta..."
+git config --global core.pager delta
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.navigate true
+git config --global delta.light false
 
 # Install Python dependencies
 if command -v pip3 >/dev/null 2>&1; then
