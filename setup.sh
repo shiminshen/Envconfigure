@@ -60,6 +60,30 @@ git config --global interactive.diffFilter "delta --color-only"
 git config --global delta.navigate true
 git config --global delta.light false
 
+# Configure lazygit to use delta
+echo "Configuring lazygit to use delta..."
+mkdir -p ~/.config/lazygit
+cat > ~/.config/lazygit/config.yml << 'EOF'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+EOF
+
+# Configure tig to use delta (with key bindings)
+echo "Configuring tig to use delta..."
+cat > ~/.tigrc << 'EOF'
+# Delta integration for tig
+# Press 'D' to show diff with delta
+# Press 'S' to show diff with delta in side-by-side mode
+bind diff D >sh -c "git show %(commit) | delta --paging always"
+bind diff S >sh -c "git show %(commit) | delta --paging always --side-by-side"
+bind stage D >sh -c "git diff HEAD -- %(file) | delta --paging always"
+bind stage S >sh -c "git diff HEAD -- %(file) | delta --paging always --side-by-side"
+bind status D >sh -c "git diff HEAD -- %(file) | delta --paging always"
+bind status S >sh -c "git diff HEAD -- %(file) | delta --paging always --side-by-side"
+EOF
+
 # Install Python dependencies
 if command -v pip3 >/dev/null 2>&1; then
     echo "Installing Python dependencies..."
