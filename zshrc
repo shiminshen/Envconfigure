@@ -1,3 +1,6 @@
+# Export forgit configuration before instant prompt to avoid warnings
+export FORGIT_INSTALL_DIR="$HOMEBREW_PREFIX/share/forgit"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -129,7 +132,9 @@ alias l.='eza -a | egrep "^\."'
 
 # Modern CLI tool aliases
 alias cat='bat'
-alias grep='rg'
+# WARNING: DON'T alias grep to rg
+# ref: https://github.com/wfxr/forgit/issues/359#issuecomment-1976299943
+# alias grep='rg'
 alias find='fd'
 alias du='dust'
 alias df='duf'
@@ -144,8 +149,7 @@ alias preview='bat --paging=never'
 alias search='rg -i'
 
 # Initialize zoxide (better cd)
-eval "$(zoxide init zsh)"
-alias cd='z'
+# eval "$(zoxide init zsh)"
 
 export GOOGLE_CLOUD_PROJECT="1017746689411"
 export NVM_DIR="$HOME/.nvm"
@@ -156,7 +160,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Fig post block. Keep at the bottom of this file.
 # export PATH="/Users/damon/.cargo/bin:/opt/homebrew/opt/curl/bin:$PATH"
-export FORGIT_INSTALL_DIR="$HOMEBREW_PREFIX/share/forgit"
+# Forgit plugin (already exported FORGIT_INSTALL_DIR before instant prompt)
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
 
 export LANG=en_US@UTF-8
@@ -263,3 +267,6 @@ Please generate a concise, one-line commit message with conventional commit of l
 
 # Created by `pipx` on 2025-06-23 01:35:45
 export PATH="$PATH:/Users/damon/.local/bin"
+
+# dlai claude code provider
+export CLAUDE_CODE_USE_BEDROCK=1

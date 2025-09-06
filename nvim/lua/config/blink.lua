@@ -18,7 +18,7 @@ M.opts = {
   completion = {
     documentation = { auto_show = true },
     ghost_text = {
-      enabled = vim.g.ai_cmp,
+      enabled = true,
     },
     -- Performance boost (default: prefetch_on_insert = false)
     trigger = {
