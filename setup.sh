@@ -26,7 +26,7 @@ fi
 
 # Install system packages
 echo "Installing system packages via Homebrew..."
-brew install zsh tmux git gh git-extras ag neovim ripgrep fd jq tig fig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
+brew install zsh tmux git gh git-extras ag neovim ripgrep fd jq tig fzf bat yazi jesseduffield/lazygit/lazygit sad tree-sitter rust
 
 # Install modern CLI tools (replacements for traditional commands)
 echo "Installing modern CLI tools..."
@@ -49,9 +49,6 @@ brew install imagemagick ghostscript
 # Install universal-ctags
 brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-
-# Install GitHub CLI extensions
-gh extension install dlvhdr/gh-dash
 
 # Configure git-delta
 echo "Configuring git-delta..."
@@ -122,7 +119,7 @@ fi
 
 # Create symbolic links for configuration files
 echo "Creating symbolic links..."
-ln -fs "$PWD/vimrc" "$HOME/.vimrc"
+# ln -fs "$PWD/vimrc" "$HOME/.vimrc"
 ln -fs "$PWD/zshrc" "$HOME/.zshrc"
 ln -fs "$PWD/nvim" "$HOME/.config/nvim"
 ln -fs "$PWD/.tmux/.tmux.conf" "$HOME/.tmux.conf"
@@ -145,5 +142,8 @@ if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Changing default shell to zsh..."
     sudo chsh -s $(which zsh)
 fi
+
+# Install GitHub CLI extensions
+# gh extension install dlvhdr/gh-dash
 
 echo "Setup completed! Please restart your terminal or run 'source ~/.zshrc' to apply changes."
