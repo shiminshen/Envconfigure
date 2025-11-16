@@ -63,8 +63,66 @@ return {
     }
   },
 
-  -- Multiple cursors support
-  { 'mg979/vim-visual-multi' },
+  -- Multiple cursors support (modern Lua-based alternative)
+  {
+    "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    config = function()
+      local mc = require("multicursor-nvim")
+      mc.setup()
+
+      local set = vim.keymap.set
+
+      -- Add cursor to next/previous word match (like Ctrl-N in VSCode/vim-visual-multi)
+      set({"n", "v"}, "<c-n>", function() mc.matchAddCursor(1) end)
+      set({"n", "v"}, "<c-p>", function() mc.matchAddCursor(-1) end)
+
+      -- Skip current match and go to next/previous
+      set({"n", "v"}, "<c-x>", function() mc.matchSkipCursor(1) end)
+      set({"n", "v"}, "<leader><c-x>", function() mc.matchSkipCursor(-1) end)
+
+      -- Add or skip cursor above/below the main cursor
+      set({"n", "v"}, "<c-down>", function() mc.lineAddCursor(1) end)
+      set({"n", "v"}, "<c-up>", function() mc.lineAddCursor(-1) end)
+      set({"n", "v"}, "<leader><c-down>", function() mc.lineSkipCursor(1) end)
+      set({"n", "v"}, "<leader><c-up>", function() mc.lineSkipCursor(-1) end)
+
+      -- Add and remove cursors with control + left click
+      set("n", "<c-leftmouse>", mc.handleMouse)
+
+      -- Toggle cursors on/off
+      set({"n", "v"}, "<leader><c-c>", mc.toggleCursor)
+
+      -- Mappings that only work when multiple cursors are active
+      mc.addKeymapLayer(function(layerSet)
+        -- Navigate between cursors
+        layerSet({"n", "v"}, "[c", mc.prevCursor)
+        layerSet({"n", "v"}, "]c", mc.nextCursor)
+
+        -- Delete/remove the current cursor
+        layerSet({"n", "v"}, "q", mc.deleteCursor)
+
+        -- Clear all cursors
+        layerSet("n", "<esc>", function()
+          if not mc.cursorsEnabled() then
+            mc.enableCursors()
+          else
+            mc.clearCursors()
+          end
+        end)
+      end)
+
+      -- Customize cursor appearance
+      local hl = vim.api.nvim_set_hl
+      hl(0, "MultiCursorCursor", { reverse = true })
+      hl(0, "MultiCursorVisual", { link = "Visual" })
+      hl(0, "MultiCursorSign", { link = "SignColumn"})
+      hl(0, "MultiCursorMatchPreview", { link = "Search" })
+      hl(0, "MultiCursorDisabledCursor", { reverse = true })
+      hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+      hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+    end,
+  },
 
   -- Repeat plugin: enables . to repeat more actions
   'tpope/vim-repeat',
