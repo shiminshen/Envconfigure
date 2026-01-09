@@ -73,34 +73,36 @@ return {
 
       local set = vim.keymap.set
 
-      -- Add cursor to next/previous word match (like Ctrl-N in VSCode/vim-visual-multi)
-      set({"n", "v"}, "<c-n>", function() mc.matchAddCursor(1) end)
-      set({"n", "v"}, "<c-p>", function() mc.matchAddCursor(-1) end)
+      -- Add cursor to next word match (like Ctrl-N in VSCode/vim-visual-multi)
+      set({ "n", "v" }, "<c-n>", function() mc.matchAddCursor(1) end)
 
       -- Skip current match and go to next/previous
-      set({"n", "v"}, "<c-x>", function() mc.matchSkipCursor(1) end)
-      set({"n", "v"}, "<leader><c-x>", function() mc.matchSkipCursor(-1) end)
+      set({ "n", "v" }, "<c-x>", function() mc.matchSkipCursor(1) end)
+      set({ "n", "v" }, "<leader><c-x>", function() mc.matchSkipCursor(-1) end)
 
       -- Add or skip cursor above/below the main cursor
-      set({"n", "v"}, "<c-down>", function() mc.lineAddCursor(1) end)
-      set({"n", "v"}, "<c-up>", function() mc.lineAddCursor(-1) end)
-      set({"n", "v"}, "<leader><c-down>", function() mc.lineSkipCursor(1) end)
-      set({"n", "v"}, "<leader><c-up>", function() mc.lineSkipCursor(-1) end)
+      set({ "n", "v" }, "<c-down>", function() mc.lineAddCursor(1) end)
+      set({ "n", "v" }, "<c-up>", function() mc.lineAddCursor(-1) end)
+      set({ "n", "v" }, "<leader><c-down>", function() mc.lineSkipCursor(1) end)
+      set({ "n", "v" }, "<leader><c-up>", function() mc.lineSkipCursor(-1) end)
 
       -- Add and remove cursors with control + left click
       set("n", "<c-leftmouse>", mc.handleMouse)
 
       -- Toggle cursors on/off
-      set({"n", "v"}, "<leader><c-c>", mc.toggleCursor)
+      set({ "n", "v" }, "<leader><c-c>", mc.toggleCursor)
 
       -- Mappings that only work when multiple cursors are active
       mc.addKeymapLayer(function(layerSet)
+        -- Add cursor to previous word match (only when multicursor is active)
+        layerSet({ "n", "v" }, "<c-p>", function() mc.matchAddCursor(-1) end)
+
         -- Navigate between cursors
-        layerSet({"n", "v"}, "[c", mc.prevCursor)
-        layerSet({"n", "v"}, "]c", mc.nextCursor)
+        layerSet({ "n", "v" }, "[c", mc.prevCursor)
+        layerSet({ "n", "v" }, "]c", mc.nextCursor)
 
         -- Delete/remove the current cursor
-        layerSet({"n", "v"}, "q", mc.deleteCursor)
+        layerSet({ "n", "v" }, "q", mc.deleteCursor)
 
         -- Clear all cursors
         layerSet("n", "<esc>", function()
@@ -116,11 +118,11 @@ return {
       local hl = vim.api.nvim_set_hl
       hl(0, "MultiCursorCursor", { reverse = true })
       hl(0, "MultiCursorVisual", { link = "Visual" })
-      hl(0, "MultiCursorSign", { link = "SignColumn"})
+      hl(0, "MultiCursorSign", { link = "SignColumn" })
       hl(0, "MultiCursorMatchPreview", { link = "Search" })
       hl(0, "MultiCursorDisabledCursor", { reverse = true })
       hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-      hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+      hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
     end,
   },
 
@@ -140,6 +142,29 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  -- grug-far.nvim: Project-wide find and replace (like VS Code's search/replace)
+  -- Keymaps:
+  --   <leader>sr       Open grug-far search/replace panel
+  --   <leader>sr       (visual mode) Search selected text
+  -- In grug-far buffer:
+  --   <Enter>          Open file at match
+  --   <localleader>r   Replace all matches
+  --   <localleader>q   Send to quickfix
+  --   <localleader>s   Sync (apply changes)
+  -- Tips:
+  --   - Type search term, results update live
+  --   - Add replacement text to preview changes
+  --   - Use "Paths:" to limit search scope (e.g., "src/**/*.ts")
+  --   - Flags: --fixed-strings (literal), -i (ignore case)
+  {
+    "MagicDuck/grug-far.nvim",
+    keys = {
+      { "<leader>sr", function() require("grug-far").open() end, mode = "n", desc = "Search and Replace" },
+      { "<leader>sr", function() require("grug-far").open({ prefills = { search = require("grug-far").get_current_visual_selection() } }) end, mode = "v", desc = "Search selected text" },
+    },
     opts = {},
   },
 
@@ -227,7 +252,7 @@ return {
     priority = 1000,
     lazy = false,
     opts = require('config.snacks').opts,
-    keys = require('config.snacks').keys,
+    config = require('config.snacks').config,
     init = require('config.snacks').init,
   },
 

@@ -203,6 +203,24 @@ M.keys = {
   },
 }
 
+M.config = function(_, opts)
+  local snacks = require("snacks")
+  snacks.setup(opts)
+
+  -- Setup keymaps
+  for _, keymap in ipairs(M.keys) do
+    local key = keymap[1]
+    local action = keymap[2]
+    local mode = keymap.mode or "n"
+    local desc = keymap.desc
+    local keymap_opts = { desc = desc, noremap = true, silent = keymap.silent ~= false }
+    if keymap.nowait then
+      keymap_opts.nowait = true
+    end
+    vim.keymap.set(mode, key, action, keymap_opts)
+  end
+end
+
 M.init = function()
   vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
