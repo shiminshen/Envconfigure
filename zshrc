@@ -269,4 +269,11 @@ Please generate a concise, one-line commit message with conventional commit of l
 export PATH="$PATH:/Users/damon/.local/bin"
 
 # dlai claude code provider
-export CLAUDE_CODE_USE_BEDROCK=1
+# export CLAUDE_CODE_USE_BEDROCK=1
+
+# bun completions
+[ -s "/Users/damon/.bun/_bun" ] && source "/Users/damon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -8,6 +8,7 @@
   "conform.nvim": { "branch": "master", "commit": "cde4da5c1083d3527776fee69536107d98dae6c9" },
   "copilot.lua": { "branch": "master", "commit": "e919876a5523b06406f0bc7285477da87a338a61" },
   "cutlass.nvim": { "branch": "main", "commit": "d01b5c1943050fcda8edf5c89d4419c41a65890e" },
+  "fff.nvim": { "branch": "main", "commit": "29e6480ea011351fe468fdec3ee01a4ff1d760cf" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "git-conflict.nvim": { "branch": "main", "commit": "4bbfdd92d547d2862a75b4e80afaf30e73f7bbb4" },
   "gitlinker.nvim": { "branch": "master", "commit": "cc59f732f3d043b626c8702cb725c82e54d35c25" },

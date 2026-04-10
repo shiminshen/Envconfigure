@@ -246,6 +246,15 @@ return {
   --   config = require('config.harpoon').config,
   -- },
 
+  -- fff.nvim: Fast fuzzy file finder with frecency and git-aware ranking
+  {
+    'dmtrKovalenko/fff.nvim',
+    build = require('config.fff').build,
+    lazy = false,
+    opts = require('config.fff').opts,
+    config = require('config.fff').config,
+  },
+
   -- UI/UX enhancements (pickers, notifications, etc.)
   {
     "folke/snacks.nvim",
