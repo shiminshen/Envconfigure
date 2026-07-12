@@ -16,7 +16,7 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 vim.loader.enable() -- https://github.com/lewis6991/impatient.nvim
     
 require("config.mappings")
-require("lazy").setup('plugins')
+require("lazy").setup({ { import = "plugins" } })
 
 -- synchronously copy 
 vim.opt.clipboard:append("unnamedplus")

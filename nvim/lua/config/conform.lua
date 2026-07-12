@@ -8,12 +8,17 @@ M.config = function()
       lsp_format = "fallback",
     },
     formatters_by_ft = {
-      -- javascript = { "prettier" },
-      -- javascriptreact = { "prettier" },
-      -- typescript = { "prettier" },
-      -- FIXME: prettier with plugin bug
-      -- typescriptreact = { "biome", "prettier", stop_after_first = true },
-      typescriptreact = { "biome" },
+      javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+      javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+      typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+      typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+      json = { "biome", "prettierd", "prettier", stop_after_first = true },
+      css = { "biome", "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
+      yaml = { "prettierd", "prettier", stop_after_first = true },
+      lua = { "stylua" },
+      python = { "ruff_format", "black", stop_after_first = true },
+      sh = { "shfmt" },
     },
   })
 end

@@ -1,7 +1,6 @@
 local M = {}
 
 M.config = function()
-  require("mason").setup()
   local lsp_servers = require("config.lsp_servers")
   local capabilities = require('blink.cmp').get_lsp_capabilities()
 
