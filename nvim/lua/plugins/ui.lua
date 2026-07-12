@@ -12,7 +12,16 @@ return {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-  { "kkoomen/vim-doge", build = ":call doge#install()" },
+  -- Doc comment generator (replaces vim-doge, which has gone quiet upstream)
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    cmd = "Neogen",
+    keys = {
+      { "<leader>cg", function() require("neogen").generate() end, desc = "Generate Doc Comment" },
+    },
+    opts = { snippet_engine = "luasnip" },
+  },
   {
     "dmtrKovalenko/fff.nvim",
     build = require("config.fff").build,

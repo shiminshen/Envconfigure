@@ -1,6 +1,8 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main", -- master is frozen/archived; main is the rewrite
+    lazy = false,
     build = ":TSUpdate",
     config = require("config.treesitter").config,
   },
@@ -28,12 +30,24 @@ return {
   },
   {
     "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
+    -- Lazy-load on its own keys/command instead of LspAttach, so the
+    -- mappings work in any buffer without a startup :Lspsaga error.
+    cmd = "Lspsaga",
+    keys = {
+      { "<leader>qf", "<cmd>Lspsaga code_action<CR>", desc = "Code Action" },
+      { "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Diagnostics" },
+      { "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
+      { "<leader>rn", "<cmd>Lspsaga rename mode=n<CR>", desc = "Rename Symbol" },
+      { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover Documentation" },
+      { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous Diagnostic" },
+      { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostic" },
+    },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = require("config.lspsaga").config,
   },
   {
     "zbirenbaum/copilot.lua",
+    cmd = "Copilot", -- keep :Copilot auth/status available before InsertEnter
     event = "InsertEnter",
     opts = { suggestion = { enabled = false }, panel = { enabled = false } },
   },
