@@ -9,11 +9,7 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function() require("nvim-ts-autotag").setup({}) end,
   },
-  {
-    "echasnovski/mini.comment",
-    version = "*",
-    config = function() require("mini.comment").setup() end,
-  },
+  -- (mini.comment removed: built-in gc commenting since nvim 0.10 covers it)
   { "max397574/better-escape.nvim", config = require("config.better-escape").config },
   { "gbprod/cutlass.nvim", opts = { cut_key = "m" } },
   {
@@ -54,14 +50,31 @@ return {
   },
   "tpope/vim-repeat",
   { "echasnovski/mini.surround", version = "*", config = function() require("mini.surround").setup() end },
+  -- flash.nvim replaces both leap.nvim (labeled jump on `f`) and
+  -- vim-easymotion (n-char incremental search). Search mode hooks into the
+  -- native `/`, so n/N, hlsearch, search history and noice all keep working;
+  -- see mappings.lua for the <Tab>/<S-Tab> next/prev-match search motions.
   {
-    "ggandor/leap.nvim",
-    config = function()
-      vim.keymap.set({ "n", "x", "o" }, "f", function()
-        require("leap").leap({ target_windows = { vim.api.nvim_get_current_win() } })
-      end)
-    end,
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {
+      modes = {
+        search = { enabled = true }, -- jump labels during native / search
+        char = { enabled = false },  -- leave F/t/T native (f is remapped below)
+      },
+    },
+    keys = {
+      { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Select" },
+    },
   },
-  "easymotion/vim-easymotion",
   { "echasnovski/mini.cursorword", version = "*", config = function() require("mini.cursorword").setup() end },
+  {
+    "MagicDuck/grug-far.nvim",
+    keys = {
+      { "<leader>sr", function() require("grug-far").open() end, mode = "n", desc = "Search and Replace" },
+      { "<leader>sr", function() require("grug-far").open({ prefills = { search = require("grug-far").get_current_visual_selection() } }) end, mode = "v", desc = "Search selected text" },
+    },
+    opts = {},
+  },
 }
