@@ -73,6 +73,16 @@ return {
     keys = {
       { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Select" },
+      -- After a normal /search<Enter>, label every match of the last search
+      -- (easymotion-style second phase without needing the ; trigger)
+      {
+        "g/",
+        mode = { "n" },
+        function()
+          require("flash").jump({ pattern = vim.fn.getreg("/"), search = { mode = "search" } })
+        end,
+        desc = "Flash Labels for Last Search",
+      },
     },
   },
   { "echasnovski/mini.cursorword", version = "*", config = function() require("mini.cursorword").setup() end },
