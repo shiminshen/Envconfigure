@@ -27,13 +27,22 @@ M.opts = {
       show_on_trigger_character = true,
     },
     menu = {
-      delay = 0,
       draw = {
         treesitter = { "lsp" },
         -- Better column layout (default: basic columns)
         columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
       },
     },
+  },
+  cmdline = {
+    -- Keep completion for : commands, but disable it during / ? search:
+    -- the popup covers the buffer and hides flash.nvim's jump labels.
+    sources = function()
+      if vim.fn.getcmdtype() == ':' then
+        return { 'cmdline' }
+      end
+      return {}
+    end,
   },
   sources = {
     default = { 'lsp', 'snippets', 'copilot', 'path', 'buffer' },
