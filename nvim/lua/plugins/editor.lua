@@ -50,40 +50,32 @@ return {
   },
   "tpope/vim-repeat",
   { "echasnovski/mini.surround", version = "*", config = function() require("mini.surround").setup() end },
-  -- flash.nvim replaces both leap.nvim (labeled jump on `f`) and
-  -- vim-easymotion (n-char incremental search). Search mode hooks into the
-  -- native `/`, so n/N, hlsearch, search history and noice all keep working;
-  -- see mappings.lua for the <Tab>/<S-Tab> next/prev-match search motions.
+  -- flash.nvim replaces leap.nvim: labeled jump on `f`, treesitter select on S.
+  -- Search-mode integration is disabled — `/` belongs to easymotion below,
+  -- whose type → <CR> → labels flow flash cannot replicate.
   {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {
       modes = {
-        search = {
-          enabled = true, -- jump labels during native / search
-          -- Two-phase flow (easymotion-style): type the pattern, press ;
-          -- and the labels freeze — then press a label to jump. Before ;
-          -- label keys are just search characters. The ; is stripped from
-          -- the actual search pattern.
-          search = { trigger = ";" },
-        },
+        search = { enabled = false },
         char = { enabled = false }, -- leave F/t/T native (f is remapped below)
       },
     },
     keys = {
       { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash Jump" },
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter Select" },
-      -- After a normal /search<Enter>, label every match of the last search
-      -- (easymotion-style second phase without needing the ; trigger)
-      {
-        "g/",
-        mode = { "n" },
-        function()
-          require("flash").jump({ pattern = vim.fn.getreg("/"), search = { mode = "search" } })
-        end,
-        desc = "Flash Labels for Last Search",
-      },
     },
+  },
+  -- EasyMotion n-char search on `/`: type pattern, <CR>, then press the
+  -- label on the target match. <Tab>/<S-Tab> page through matches while
+  -- typing. Kept because this exact two-phase flow is irreplaceable.
+  {
+    "easymotion/vim-easymotion",
+    config = function()
+      vim.keymap.set("n", "/", "<Plug>(easymotion-sn)", { remap = true })
+      vim.keymap.set("o", "/", "<Plug>(easymotion-tn)", { remap = true })
+    end,
   },
   { "echasnovski/mini.cursorword", version = "*", config = function() require("mini.cursorword").setup() end },
   {

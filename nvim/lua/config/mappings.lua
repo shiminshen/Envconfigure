@@ -29,15 +29,3 @@ vim.keymap.set('n', '<C-j>', ':BufferLineCyclePrev<CR>', { silent = true })
 -- BufferLineMoveNext and BufferLineMovePrev mappings
 vim.keymap.set('n', '<C-l>', ':BufferLineMoveNext<CR>', { silent = true })
 vim.keymap.set('n', '<C-h>', ':BufferLineMovePrev<CR>', { silent = true })
-
--- During / and ? search: <Tab>/<S-Tab> move to the next/previous match
--- anywhere in the buffer (incsearch scrolls the view, flash.nvim labels
--- follow). Replaces EasyMotion's n-char search-with-paging workflow.
--- Outside search, <Tab> keeps triggering cmdline completion via 'wildcharm'.
-vim.o.wildcharm = 26 -- <C-z>
-vim.keymap.set('c', '<Tab>', function()
-  return vim.fn.getcmdtype():match('[/?]') and '<C-g>' or '<C-z>'
-end, { expr = true })
-vim.keymap.set('c', '<S-Tab>', function()
-  return vim.fn.getcmdtype():match('[/?]') and '<C-t>' or '<S-Tab>'
-end, { expr = true })
