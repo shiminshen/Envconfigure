@@ -59,8 +59,15 @@ return {
     event = "VeryLazy",
     opts = {
       modes = {
-        search = { enabled = true }, -- jump labels during native / search
-        char = { enabled = false },  -- leave F/t/T native (f is remapped below)
+        search = {
+          enabled = true, -- jump labels during native / search
+          -- Two-phase flow (easymotion-style): type the pattern, press ;
+          -- and the labels freeze — then press a label to jump. Before ;
+          -- label keys are just search characters. The ; is stripped from
+          -- the actual search pattern.
+          search = { trigger = ";" },
+        },
+        char = { enabled = false }, -- leave F/t/T native (f is remapped below)
       },
     },
     keys = {
